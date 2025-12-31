@@ -1141,8 +1141,8 @@
             color: var(--accent-color);
             font-weight: 600;
             opacity: 0;
-            animation: hintFadeIn 0.8s ease forwards,
-                    hintFloat 2.5s ease-in-out infinite;
+            animation: hintFadeIn 2s ease forwards,
+                    hintFloat 2s ease-in-out infinite;
         }
 
         @keyframes hintFadeIn {
@@ -1533,8 +1533,7 @@
                 </div>
                 
                 <div style="text-align: center; margin-top: 40px; font-weight: bold; color: var(--accent-color); font-size: 1.2rem;">
-                    <span data-ar="✔️ برامج فردية أو مجمعة متاحة حسب احتياجك" data-en="✔️ Individual or combined programs available based on your needs">
-                        ✔️ برامج فردية أو مجمعة متاحة حسب احتياجك
+                    <span data-ar="✔️ برامج متاحة حسب احتياجك" data-en="✔️ programs available based on your needs">
                     </span>
                 </div>
             </div>
@@ -2307,7 +2306,7 @@ We do not offer group classes, as we focus on personalized instruction to ensure
             setTimeout(() => {
                 const hint = document.querySelector('.cta-hint');
                 if (hint) hint.style.display = 'none';
-            }, 6000);
+            }, 60000);
         });
     </script>
 </body>
