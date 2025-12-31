@@ -1091,6 +1091,67 @@
                 padding: 30px 20px;
             }
         }
+
+
+
+/* عند وجود كارت واحد فقط في suitability */
+.suitability-grid {
+    grid-template-columns: 1fr;
+}
+
+/* تكبير كارت نعم ليكون أوضح */
+.suitability-card.yes {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+
+/* الزر نفسه */
+.floating-trial-btn {
+    position: fixed;
+    overflow: visible;
+    z-index: 999;
+}
+
+/* الموجة الواضحة */
+.floating-trial-btn::before,
+.floating-trial-btn::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120%;
+    height: 120%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid rgba(255, 107, 107, 0.7);
+    animation: clearWave 4s ease-out infinite;
+    pointer-events: none;
+}
+
+/* الموجة الثانية بتأخير */
+.floating-trial-btn::after {
+    animation-delay: 2s;
+    border-color: rgba(255, 142, 83, 0.6);
+}
+
+/* حركة الموجة */
+@keyframes clearWave {
+    0% {
+        transform: translate(-50%, -50%) scale(0.9);
+        opacity: 0.9;
+    }
+    70% {
+        transform: translate(-50%, -50%) scale(1.6);
+        opacity: 0.2;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.9);
+        opacity: 0;
+    }
+}
+
+
     </style>
 </head>
 <body class="arabic">
@@ -1212,9 +1273,8 @@
                 <div class="testimonials-grid">
                     <div class="testimonial-card">
                         <div class="testimonial-text">
-                            <span data-ar="بدأت من الصفر، والآن أقرأ القرآن بثقة. المنهج المنظم ساعدني أكثر من أي برنامج آخر جربته." 
-                                  data-en="I started from scratch, and now I read Quran with confidence. The structured curriculum helped me more than any other program I tried.">
-                                بدأت من الصفر، والآن أقرأ القرآن بثقة. المنهج المنظم ساعدني أكثر من أي برنامج آخر جربته.
+                            <span data-ar="الشرح لا يفترض أي معرفة مسبقة، وهذا ما جعل البداية سهلة ومشجعة." 
+                                  data-en="The lessons assume no prior knowledge, which made getting started easy and encouraging.">
                             </span>
                         </div>
                         <div class="testimonial-author">— طالب من كندا</div>
@@ -1222,9 +1282,9 @@
                     
                     <div class="testimonial-card">
                         <div class="testimonial-text">
-                            <span data-ar="المعلمون صبورون ومتفهمون لصعوبات تعلم لغة جديدة. بيئة محترمة تناسب عائلتي المسلمة." 
-                                  data-en="The teachers are patient and understanding of the difficulties of learning a new language. A respectful environment suitable for my Muslim family.">
-                                المعلمون صبورون ومتفهمون لصعوبات تعلم لغة جديدة. بيئة محترمة تناسب عائلتي المسلمة.
+                            <span data-ar="أعجبني التركيز على الفهم وليس الحفظ فقط. هذا ما كنت أبحث عنه لأولادي." 
+                                  data-en="I appreciated the focus on understanding rather than memorization. This is exactly what I wanted for my children.">
+
                             </span>
                         </div>
                         <div class="testimonial-author">— أم من بريطانيا</div>
@@ -1232,9 +1292,9 @@
                     
                     <div class="testimonial-card">
                         <div class="testimonial-text">
-                            <span data-ar="التوجيه المجاني ساعدني في اختيار البرنامج المناسب. الآن أتعلم العربية والقرآن معًا بنظام واضح." 
-                                  data-en="The free guidance helped me choose the right program. Now I'm learning Arabic and Quran together with a clear system.">
-                                التوجيه المجاني ساعدني في اختيار البرنامج المناسب. الآن أتعلم العربية والقرآن معًا بنظام واضح.
+                            <span data-ar="البرنامج مناسب لمن يريد تعلّم العربية وفهم القرآن دون ضغط أو تعقيد." 
+                                  data-en="This program is ideal for anyone who wants to learn Arabic and understand the Qur’an without pressure or complexity.">
+
                             </span>
                         </div>
                         <div class="testimonial-author">— طالب من أستراليا</div>
@@ -1455,7 +1515,7 @@
                         <ul class="pricing-features">
                             <li data-ar="دروس مباشرة مع معلم مؤهل" data-en="Live lessons with qualified teacher">دروس مباشرة مع معلم مؤهل</li>
                             <li data-ar="تعليم منظم للناطقين بغير العربية" data-en="Structured teaching for non-Arabic speakers">تعليم منظم للناطقين بغير العربية</li>
-                            <li data-ar="بدون تشتيت أو موسيقى" data-en="No distractions or music">بدون تشتيت أو موسيقى</li>
+
                             <li data-ar="جدول مرن حسب وقتك" data-en="Flexible schedule based on your time">جدول مرن حسب وقتك</li>
                             <li data-ar="متابعة دورية وتقارير تقدم" data-en="Regular follow-up and progress reports">متابعة دورية وتقارير تقدم</li>
                             <li data-ar="تطبيقات عملية وتمارين تفاعلية" data-en="Practical applications and interactive exercises">تطبيقات عملية وتمارين تفاعلية</li>
@@ -1466,8 +1526,8 @@
                             <i class="fas fa-play-circle"></i> ابدأ التعلم الآن
                         </button>
                         
-                        <p class="pricing-note" data-ar="* الأسعار بالدولار الأمريكي - دفعات أسبوعية أو شهرية" data-en="* Prices in US Dollar - Weekly or monthly payments">
-                            * الأسعار بالدولار الأمريكي - دفعات أسبوعية أو شهرية
+                        <p class="pricing-note" data-ar="* الأسعار بالدولار الأمريكي - دفعات شهرية" data-en="* Prices in US Dollar - monthly payments">
+                            * الأسعار بالدولار الأمريكي - دفعات شهرية
                         </p>
                     </div>
                 </div>
@@ -1514,9 +1574,7 @@
                             <li data-ar="تبحث عن تعليم منظم ومحترم" data-en="Looking for structured and respectful education">
                                 تبحث عن تعليم منظم ومحترم
                             </li>
-                            <li data-ar="مستعد للالتزام والمواظبة" data-en="Ready to commit and be consistent">
-                                مستعد للالتزام والمواظبة
-                            </li>
+
                             <li data-ar="تريد فهم القرآن بلغته الأصلية" data-en="Want to understand Quran in its original language">
                                 تريد فهم القرآن بلغته الأصلية
                             </li>
@@ -1528,32 +1586,7 @@
                             </li>
                         </ul>
                     </div>
-                    
-                    <div class="suitability-card no">
-                        <div class="suitability-header">
-                            <div class="suitability-icon">
-                                <i class="fas fa-times-circle"></i>
-                            </div>
-                            <h3 data-ar="❌ لا، إذا كنت:" data-en="❌ No, if you:">❌ لا، إذا كنت:</h3>
-                        </div>
-                        <ul class="suitability-list">
-                            <li data-ar="تبحث عن نتائج سريعة بدون التزام حقيقي" data-en="Looking for quick results without real commitment">
-                                تبحث عن نتائج سريعة بدون التزام حقيقي
-                            </li>
-                            <li data-ar="تريد مجرد تجربة عابرة" data-en="Just want a casual trial">
-                                تريد مجرد تجربة عابرة
-                            </li>
-                            <li data-ar="لا تستطيع الالتزام بجدول منتظم" data-en="Cannot commit to a regular schedule">
-                                لا تستطيع الالتزام بجدول منتظم
-                            </li>
-                            <li data-ar="تبحث عن تعلم ترفيهي غير أكاديمي" data-en="Looking for entertainment-based, non-academic learning">
-                                تبحث عن تعلم ترفيهي غير أكاديمي
-                            </li>
-                            <li data-ar="لا تمانع في وجود موسيقى أو محتوى غير لائق" data-en="Don't mind having music or inappropriate content">
-                                لا تمانع في وجود موسيقى أو محتوى غير لائق
-                            </li>
-                        </ul>
-                    </div>
+
                 </div>
                 
                 <div class="suitability-cta">
@@ -1606,35 +1639,41 @@
                             <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
                         </div>
                         <div class="faq-answer">
-                            <span data-ar="مع الالتزام بحصتين أسبوعيًا، معظم الطلاب يقرؤون الكلمات البسيطة خلال 6-8 أسابيع، والقراءة بطلاقة خلال 4-6 أشهر." 
-                                  data-en="With commitment to two weekly sessions, most students read simple words within 6-8 weeks, and read fluently within 4-6 months.">
-                                مع الالتزام بحصتين أسبوعيًا، معظم الطلاب يقرؤون الكلمات البسيطة خلال 6-8 أسابيع، والقراءة بطلاقة خلال 4-6 أشهر.
+                            <span data-ar="يختلف ذلك حسب قدرة الطفل على الاستيعاب، ومدى المتابعة في المنزل، واستمرارية التعلم مع المعلّم.
+وبفضل الله، ومع المنهج والمتابعة الصحيحة، يستطيع الطفل معنا أن يبدأ في قراءة القرآن خلال أقل من ستة أشهر بإذن الله." 
+                                  data-en="This depends on the child’s ability to understand, the level of follow-up at home, and consistency in learning with the teacher.
+By the grace of Allah, with proper guidance and regular practice, the child can start reading the Quran with us in less than six months, in shā’ Allāh.">
+
                             </span>
                         </div>
                     </div>
                     
                     <div class="faq-item">
                         <div class="faq-question">
-                            <span data-ar="هل يمكنني اختيار مدة الحصة (30 أو 60 دقيقة)؟" data-en="Can I choose lesson duration (30 or 60 minutes)?">هل يمكنني اختيار مدة الحصة (30 أو 60 دقيقة)؟</span>
+                            <span data-ar="هل يمكنني اختيار مدة الحصة؟" data-en="Can I choose the session duration?">هل يمكنني اختيار مدة الحصة؟</span>
                             <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
                         </div>
                         <div class="faq-answer">
-                            <span data-ar="نعم، يمكنك اختيار المدة المناسبة لك (30 دقيقة بـ 4$ أو 60 دقيقة بـ 8$). ننصح المبتدئين بالبدء بـ 30 دقيقة، والمتقدمين بـ 60 دقيقة." 
-                                  data-en="Yes, you can choose the duration that suits you (30 minutes for $4 or 60 minutes for $8). We recommend beginners start with 30 minutes, and advanced students with 60 minutes.">
-                                نعم، يمكنك اختيار المدة المناسبة لك (30 دقيقة بـ 4$ أو 60 دقيقة بـ 8$). ننصح المبتدئين بالبدء بـ 30 دقيقة، والمتقدمين بـ 60 دقيقة.
+                            <span data-ar="نعم، يمكنك اختيار مدة الحصة التي تناسبك حسب احتياجك ومستواك.
+المدد المتاحة هي: 30 دقيقة، 45 دقيقة، أو 60 دقيقة." 
+                                  data-en="Yes, you can choose the session duration that best suits your needs and level.
+The available options are 30 minutes, 45 minutes, or 60 minutes.">
+
                             </span>
                         </div>
                     </div>
                     
                     <div class="faq-item">
                         <div class="faq-question">
-                            <span data-ar="هل أدفع أسبوعيًا أم شهريًا؟" data-en="Do I pay weekly or monthly?">هل أدفع أسبوعيًا أم شهريًا؟</span>
+                            <span data-ar="هل يدرس الطالب بمفرده أم ضمن مجموعة من الطلاب؟" data-en="Does the student study individually or in a group ?">هل يدرس الطالب بمفرده أم ضمن مجموعة من الطلاب؟</span>
                             <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
                         </div>
                         <div class="faq-answer">
-                            <span data-ar="نقدم مرونة في الدفع: يمكنك الدفع أسبوعيًا أو شهريًا حسب ما يناسبك. ننصح بالدفع الشهري للحصول على أفضل متابعة وتقدم مستمر." 
-                                  data-en="We offer payment flexibility: you can pay weekly or monthly as it suits you. We recommend monthly payment for the best follow-up and continuous progress.">
-                                نقدم مرونة في الدفع: يمكنك الدفع أسبوعيًا أو شهريًا حسب ما يناسبك. ننصح بالدفع الشهري للحصول على أفضل متابعة وتقدم مستمر.
+                            <span data-ar="التعليم معنا تعليم فردي بالكامل، حيث يحصل كل طالب على معلم أو معلمة خاصة به فقط.
+لا نعتمد نظام التعليم الجماعي أو المجموعات، بل نحرص على تقديم متابعة شخصية وتركيز كامل لكل طالب لضمان أفضل نتائج تعليمية." 
+                                  data-en="All lessons with us are one-on-one. Each student is assigned a dedicated male or female teacher and receives individual attention.
+We do not offer group classes, as we focus on personalized instruction to ensure the best learning experience and results.">
+
                             </span>
                         </div>
                     </div>
@@ -1723,9 +1762,7 @@
                         <a href="https://www.youtube.com/@ArabicinMinutess" target="_blank"><i class="fab fa-youtube"></i> 
                             <span data-ar="قناة اليوتيوب" data-en="YouTube Channel">قناة اليوتيوب</span>
                         </a>
-                        <a href="https://forms.gle/example" target="_blank"><i class="fas fa-envelope"></i> 
-                            <span data-ar="نموذج الاتصال" data-en="Contact Form">نموذج الاتصال</span>
-                        </a>
+
                         <a href="#pricing"><i class="fas fa-tag"></i> 
                             <span data-ar="الأسعار" data-en="Pricing">الأسعار</span>
                         </a>
@@ -1734,11 +1771,11 @@
             </div>
             
             <div class="copyright">
-                <p>© 2023 Arabic in Minutes. <span data-ar="جميع الحقوق محفوظة." data-en="All rights reserved.">جميع الحقوق محفوظة.</span></p>
+                <p>© 2026 Arabic in Minutes. <span data-ar="جميع الحقوق محفوظة." data-en="All rights reserved.">جميع الحقوق محفوظة.</span></p>
                 <p style="margin-top: 10px; font-size: 0.8rem;">
-                    <span data-ar="تعليم إسلامي أصيل — لا موسيقى — بيئة محترمة للأسرة" 
-                          data-en="Authentic Islamic Education — No Music — Family-Friendly Environment">
-                        تعليم إسلامي أصيل — لا موسيقى — بيئة محترمة للأسرة
+                    <span data-ar="تعليم إسلامي أصيل — بيئة محترمة للأسرة" 
+                          data-en="Authentic Islamic Education — Family-Friendly Environment">
+                        تعليم إسلامي أصيل — بيئة محترمة للأسرة
                     </span>
                 </p>
             </div>
