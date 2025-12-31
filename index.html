@@ -1,50 +1,2155 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>ArabicinMinutes</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: #ffffff;
-      text-align: center;
-      direction: rtl;
-    }
-    header {
-      padding: 90px 20px;
-    }
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 15px;
-    }
-    p {
-      font-size: 1.3rem;
-      color: #c7d2fe;
-      max-width: 600px;
-      margin: auto;
-    }
-    .btn {
-      display: inline-block;
-      margin-top: 35px;
-      padding: 15px 35px;
-      background: #22c55e;
-      color: #000;
-      text-decoration: none;
-      border-radius: 40px;
-      font-weight: bold;
-      font-size: 1.1rem;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arabic in Minutes - تعلم العربية والقرآن والعلوم الإسلامية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a5f7a;
+            --secondary-color: #2d8b8b;
+            --accent-color: #57cc99;
+            --accent-orange: #ff8e53;
+            --success-color: #2ecc71;
+            --warning-color: #ff6b6b;
+            --price-color: #9b59b6;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --text-color: #333;
+            --border-radius: 12px;
+            --box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Tajawal', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: var(--text-color);
+            line-height: 1.7;
+            direction: rtl;
+            overflow-x: hidden;
+        }
+
+        body.english {
+            direction: ltr;
+            text-align: left;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+            background: white;
+            padding: 10px 15px;
+            border-radius: 50px;
+            box-shadow: var(--box-shadow);
+            border: 2px solid #f0f0f0;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: 1px solid #ddd;
+            padding: 6px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* Header Styles - HERO SECTION */
+        header {
+            background: linear-gradient(135deg, #0f4c75, #1a5f7a, #2d8b8b);
+            color: white;
+            padding: 40px 0 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            padding: 40px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo {
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .logo i {
+            color: var(--accent-color);
+            background: white;
+            padding: 15px;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-headline {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-subheadline {
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+            opacity: 0.95;
+            font-weight: 500;
+        }
+
+        .hero-features {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 30px 0 40px;
+            font-size: 1.2rem;
+        }
+
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 10px 20px;
+            border-radius: 30px;
+            backdrop-filter: blur(5px);
+        }
+
+        .hero-feature i {
+            color: var(--accent-color);
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 18px 35px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            border: none;
+            min-width: 220px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-color), #38b2ac);
+            color: white;
+            box-shadow: 0 8px 25px rgba(87, 204, 153, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(87, 204, 153, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 3px solid white;
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        /* Main Content */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 20px;
+            font-size: 2.2rem;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 3px;
+        }
+
+        /* Trust Section */
+        .trust-section {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 50px;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 60px;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .trust-item {
+            text-align: center;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            background: #f8f9fa;
+            transition: var(--transition);
+        }
+
+        .trust-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .trust-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            background: white;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+            position: relative;
+            border-top: 5px solid var(--accent-color);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            padding-right: 20px;
+        }
+
+        .testimonial-text:before {
+            content: "❝";
+            position: absolute;
+            right: 0;
+            top: -10px;
+            font-size: 3rem;
+            color: var(--accent-color);
+            opacity: 0.3;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--primary-color);
+            text-align: left;
+        }
+
+        /* Teachers Section */
+        .teachers-section {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+
+        .teachers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .teacher-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .teacher-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .teacher-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            background: #f0f7ff;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 40px 30px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            border-top: 5px solid var(--secondary-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+        }
+
+        .service-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .learning-outcomes {
+            background: #f0f7ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 25px;
+        }
+
+        .learning-outcomes h4 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .learning-outcomes ul {
+            list-style: none;
+            padding-right: 0;
+        }
+
+        .learning-outcomes li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #d1e3ff;
+            position: relative;
+            padding-right: 25px;
+        }
+
+        .learning-outcomes li:before {
+            content: "✓";
+            position: absolute;
+            right: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .english .learning-outcomes li {
+            padding-right: 0;
+            padding-left: 25px;
+        }
+
+        .english .learning-outcomes li:before {
+            right: auto;
+            left: 0;
+        }
+
+        /* PRICING SECTION */
+        .pricing-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .pricing-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            line-height: 1.8;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 40px 30px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card.free {
+            border-top: 6px solid var(--accent-color);
+        }
+
+        .pricing-card.paid {
+            border-top: 6px solid var(--price-color);
+            transform: scale(1.05);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: 20px;
+            left: -30px;
+            background: var(--accent-color);
+            color: white;
+            padding: 8px 40px;
+            transform: rotate(-45deg);
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .pricing-card.paid .pricing-badge {
+            background: var(--price-color);
+        }
+
+        .pricing-icon {
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .pricing-card.free .pricing-icon {
+            color: var(--accent-color);
+        }
+
+        .pricing-card.paid .pricing-icon {
+            color: var(--price-color);
+        }
+
+        .pricing-title {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .pricing-duration {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .pricing-price {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin: 25px 0;
+            color: var(--price-color);
+        }
+
+        .pricing-card.free .pricing-price {
+            color: var(--accent-color);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 30px 0;
+            text-align: right;
+        }
+
+        .english .pricing-features {
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 12px 0;
+            border-bottom: 1px dashed #eee;
+            position: relative;
+            padding-right: 35px;
+            font-size: 1.1rem;
+        }
+
+        .english .pricing-features li {
+            padding-right: 0;
+            padding-left: 35px;
+        }
+
+        .pricing-features li:before {
+            content: "✓";
+            position: absolute;
+            right: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .english .pricing-features li:before {
+            right: auto;
+            left: 0;
+        }
+
+        .pricing-note {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 25px;
+            font-style: italic;
+        }
+
+        .pricing-options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .pricing-option {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+        }
+
+        .pricing-option h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .pricing-option .price {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--price-color);
+            margin: 15px 0;
+        }
+
+        /* Suitability Section */
+        .suitability-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+            margin-bottom: 50px;
+        }
+
+        .suitability-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 35px 30px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border-top: 6px solid transparent;
+        }
+
+        .suitability-card.yes {
+            border-top-color: var(--success-color);
+        }
+
+        .suitability-card.no {
+            border-top-color: var(--warning-color);
+        }
+
+        .suitability-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .suitability-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .suitability-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .suitability-card.yes .suitability-icon {
+            background-color: rgba(46, 204, 113, 0.15);
+            color: var(--success-color);
+        }
+
+        .suitability-card.no .suitability-icon {
+            background-color: rgba(255, 107, 107, 0.15);
+            color: var(--warning-color);
+        }
+
+        .suitability-card h3 {
+            font-size: 1.8rem;
+            margin: 0;
+        }
+
+        .suitability-card.yes h3 {
+            color: var(--success-color);
+        }
+
+        .suitability-card.no h3 {
+            color: var(--warning-color);
+        }
+
+        .suitability-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        .suitability-list li {
+            padding: 12px 0;
+            border-bottom: 1px dashed #eee;
+            position: relative;
+            padding-right: 35px;
+            font-size: 1.1rem;
+        }
+
+        .english .suitability-list li {
+            padding-right: 0;
+            padding-left: 35px;
+        }
+
+        .suitability-card.yes .suitability-list li:before {
+            content: "✓";
+            position: absolute;
+            right: 0;
+            color: var(--success-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .english .suitability-card.yes .suitability-list li:before {
+            right: auto;
+            left: 0;
+        }
+
+        .suitability-card.no .suitability-list li:before {
+            content: "✗";
+            position: absolute;
+            right: 0;
+            color: var(--warning-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .english .suitability-card.no .suitability-list li:before {
+            right: auto;
+            left: 0;
+        }
+
+        .suitability-cta {
+            text-align: center;
+            margin-top: 40px;
+            padding: 40px;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .suitability-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .suitability-btn {
+            padding: 18px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            cursor: pointer;
+            border: none;
+            min-width: 280px;
+        }
+
+        .suitability-btn-primary {
+            background: linear-gradient(135deg, var(--success-color), #27ae60);
+            color: white;
+            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.4);
+        }
+
+        .suitability-btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(46, 204, 113, 0.6);
+        }
+
+        .suitability-btn-secondary {
+            background: #f8f9fa;
+            color: var(--dark-color);
+            border: 2px solid #ddd;
+        }
+
+        .suitability-btn-secondary:hover {
+            background: #e9ecef;
+            transform: translateY(-3px);
+            border-color: #ccc;
+        }
+
+        .suitability-note {
+            text-align: center;
+            margin-top: 50px;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(26, 95, 122, 0.05), rgba(45, 139, 139, 0.05));
+            border-radius: var(--border-radius);
+            border-right: 5px solid var(--primary-color);
+        }
+
+        .suitability-note p {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            line-height: 1.8;
+        }
+
+        .suitability-note .highlight {
+            color: var(--secondary-color);
+            font-weight: 800;
+        }
+
+        /* FAQ */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .faq-question {
+            padding: 25px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f8f9fa;
+            font-size: 1.1rem;
+        }
+
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 25px 25px;
+            max-height: 500px;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--primary-color);
+            background: #f0f7ff;
+        }
+
+        /* Floating Trial Button */
+        .floating-trial-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.5);
+            z-index: 999;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 10px 30px rgba(255, 107, 107, 0.5); }
+            50% { box-shadow: 0 10px 40px rgba(255, 107, 107, 0.8); }
+            100% { box-shadow: 0 10px 30px rgba(255, 107, 107, 0.5); }
+        }
+
+        .floating-trial-btn:hover {
+            width: 220px;
+            height: 70px;
+            border-radius: 35px;
+        }
+
+        .floating-trial-btn:hover .trial-text {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .floating-trial-btn i {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .trial-text {
+            display: none;
+            font-size: 1rem;
+            white-space: nowrap;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 70px 0 30px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 25px 0;
+        }
+
+        .footer-links a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .copyright {
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px solid #555;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1001;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark-color);
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .modal-close:hover {
+            background: #f5f5f5;
+        }
+
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 15px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-headline {
+                font-size: 2rem;
+            }
+            
+            .hero-subheadline {
+                font-size: 1.3rem;
+            }
+            
+            .hero-features {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .section {
+                padding: 50px 0;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .trust-section, .service-card, .pricing-card {
+                padding: 30px 20px;
+            }
+            
+            .language-switcher {
+                top: 15px;
+                left: 15px;
+                padding: 8px 12px;
+            }
+            
+            .floating-trial-btn {
+                bottom: 20px;
+                left: 20px;
+                width: 60px;
+                height: 60px;
+            }
+            
+            .floating-trial-btn:hover {
+                width: 180px;
+                height: 60px;
+            }
+            
+            .services-grid, .testimonials-grid, .teachers-grid, 
+            .pricing-grid, .suitability-grid, .faq-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-card.paid {
+                transform: scale(1);
+            }
+            
+            .pricing-options {
+                flex-direction: column;
+            }
+            
+            .suitability-btn {
+                min-width: 100%;
+            }
+            
+            .suitability-buttons {
+                flex-direction: column;
+            }
+            
+            .modal-content {
+                padding: 30px 20px;
+            }
+        }
+    </style>
 </head>
-<body>
+<body class="arabic">
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button class="lang-btn active" data-lang="ar">العربية</button>
+        <button class="lang-btn" data-lang="en">English</button>
+    </div>
 
-<header>
-  <h1>Arabic in Minutes</h1>
+    <!-- Floating Trial Button -->
+    <div class="floating-trial-btn" id="trialBtn">
+        <i class="fas fa-calendar-check"></i>
+        <span class="trial-text" data-ar="حصة تجريبية مجانية" data-en="Free Trial Lesson">حصة تجريبية مجانية</span>
+    </div>
 
-</header>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-globe"></i>
+                    <span>Arabic in Minutes</span>
+                </div>
+                <h1 class="hero-headline" data-ar="تعلم العربية والقرآن من الصفر" data-en="Learn Arabic & Quran From Scratch">
+                    تعلم العربية والقرآن من الصفر
+                </h1>
+                <h2 class="hero-subheadline" data-ar="للناطقين بغير العربية — بأسلوب منظم وبدون تعقيد" 
+                    data-en="For Non-Arabic Speakers — Structured & Simple Method">
+                    للناطقين بغير العربية — بأسلوب منظم وبدون تعقيد
+                </h2>
+                
+                <div class="hero-features">
+                    <div class="hero-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span data-ar="توجيه مجاني" data-en="Free Guidance">توجيه مجاني</span>
+                    </div>
+                    <div class="hero-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span data-ar="معلمون مؤهلون" data-en="Qualified Teachers">معلمون مؤهلون</span>
+                    </div>
+                    <div class="hero-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span data-ar="تعليم محترم بدون موسيقى" data-en="Respectful Learning - No Music">تعليم محترم بدون موسيقى</span>
+                    </div>
+                </div>
+                
+                <div class="hero-buttons">
+                    <a href="#pricing" class="btn-primary" data-ar="شاهد خطط الأسعار" data-en="View Pricing Plans">
+                        <i class="fas fa-tag"></i> شاهد خطط الأسعار
+                    </a>
+                    <button class="btn-secondary" id="trialHeroBtn" data-ar="حصة تجريبية مجانية" data-en="Free Trial Lesson">
+                        <i class="fas fa-graduation-cap"></i> حصة تجريبية مجانية
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
 
+    <!-- Main Content -->
+    <main>
+        <!-- Trust Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title" data-ar="لماذا يثق الطلاب بنا؟" data-en="Why Students Trust Us?">
+                    لماذا يثق الطلاب بنا؟
+                </h2>
+                
+                <div class="trust-grid">
+                    <div class="trust-item">
+                        <div class="trust-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <h3 data-ar="معلمون مؤهلون" data-en="Qualified Teachers">معلمون مؤهلون</h3>
+                        <p data-ar="متخصصون في تعليم غير الناطقين بالعربية" data-en="Specialized in teaching non-Arabic speakers">
+                            متخصصون في تعليم غير الناطقين بالعربية
+                        </p>
+                    </div>
+                    
+                    <div class="trust-item">
+                        <div class="trust-icon">
+                            <i class="fas fa-map-signs"></i>
+                        </div>
+                        <h3 data-ar="منهج واضح" data-en="Clear Curriculum">منهج واضح</h3>
+                        <p data-ar="خطوة بخطوة، من البداية حتى الإتقان" data-en="Step-by-step, from basics to mastery">
+                            خطوة بخطوة، من البداية حتى الإتقان
+                        </p>
+                    </div>
+                    
+                    <div class="trust-item">
+                        <div class="trust-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3 data-ar="توجيه مجاني" data-en="Free Guidance">توجيه مجاني</h3>
+                        <p data-ar="قبل أي التزام مالي، نرشدك للمسار المناسب" data-en="Before any commitment, we guide you to the right path">
+                            قبل أي التزام مالي، نرشدك للمسار المناسب
+                        </p>
+                    </div>
+                    
+                    <div class="trust-item">
+                        <div class="trust-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3 data-ar="بيئة محترمة" data-en="Respectful Environment">بيئة محترمة</h3>
+                        <p data-ar="مناسبة للأسرة، بدون موسيقى أو محتوى غير لائق" data-en="Family-friendly, no music or inappropriate content">
+                            مناسبة للأسرة، بدون موسيقى أو محتوى غير لائق
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="section" style="background-color: #f8f9fa;">
+            <div class="container">
+                <h2 class="section-title" data-ar="ماذا يقول طلابنا؟" data-en="What Our Students Say?">
+                    ماذا يقول طلابنا؟
+                </h2>
+                
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            <span data-ar="بدأت من الصفر، والآن أقرأ القرآن بثقة. المنهج المنظم ساعدني أكثر من أي برنامج آخر جربته." 
+                                  data-en="I started from scratch, and now I read Quran with confidence. The structured curriculum helped me more than any other program I tried.">
+                                بدأت من الصفر، والآن أقرأ القرآن بثقة. المنهج المنظم ساعدني أكثر من أي برنامج آخر جربته.
+                            </span>
+                        </div>
+                        <div class="testimonial-author">— طالب من كندا</div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            <span data-ar="المعلمون صبورون ومتفهمون لصعوبات تعلم لغة جديدة. بيئة محترمة تناسب عائلتي المسلمة." 
+                                  data-en="The teachers are patient and understanding of the difficulties of learning a new language. A respectful environment suitable for my Muslim family.">
+                                المعلمون صبورون ومتفهمون لصعوبات تعلم لغة جديدة. بيئة محترمة تناسب عائلتي المسلمة.
+                            </span>
+                        </div>
+                        <div class="testimonial-author">— أم من بريطانيا</div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            <span data-ar="التوجيه المجاني ساعدني في اختيار البرنامج المناسب. الآن أتعلم العربية والقرآن معًا بنظام واضح." 
+                                  data-en="The free guidance helped me choose the right program. Now I'm learning Arabic and Quran together with a clear system.">
+                                التوجيه المجاني ساعدني في اختيار البرنامج المناسب. الآن أتعلم العربية والقرآن معًا بنظام واضح.
+                            </span>
+                        </div>
+                        <div class="testimonial-author">— طالب من أستراليا</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Teachers Section -->
+        <section class="section teachers-section">
+            <div class="container">
+                <h2 class="section-title" data-ar="معلمونا" data-en="Our Teachers">
+                    معلمونا
+                </h2>
+                
+                <div class="teachers-grid">
+                    <div class="teacher-card">
+                        <div class="teacher-icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <h3 data-ar="متخصصون في تعليم غير الناطقين" data-en="Specialized in Teaching Non-Arabic Speakers">
+                            متخصصون في تعليم غير الناطقين
+                        </h3>
+                        <p data-ar="خبرة في تبسيط اللغة العربية للناطقين بلغات أخرى" 
+                           data-en="Experience in simplifying Arabic for speakers of other languages">
+                            خبرة في تبسيط اللغة العربية للناطقين بلغات أخرى
+                        </p>
+                    </div>
+                    
+                    <div class="teacher-card">
+                        <div class="teacher-icon">
+                            <i class="fas fa-laptop-house"></i>
+                        </div>
+                        <h3 data-ar="خبرة في التعليم عبر الإنترنت" data-en="Online Teaching Experience">
+                            خبرة في التعليم عبر الإنترنت
+                        </h3>
+                        <p data-ar="إتقان أدوات التعليم الإلكتروني وتقديم دروس تفاعلية" 
+                           data-en="Mastery of e-learning tools and delivering interactive lessons">
+                            إتقان أدوات التعليم الإلكتروني وتقديم دروس تفاعلية
+                        </p>
+                    </div>
+                    
+                    <div class="teacher-card">
+                        <div class="teacher-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3 data-ar="التزام بالمنهج الوسطي" data-en="Commitment to Moderate Approach">
+                            التزام بالمنهج الوسطي
+                        </h3>
+                        <p data-ar="تقديم تعليم إسلامي أصيل مع احترام ثقافات الطلاب المختلفة" 
+                           data-en="Providing authentic Islamic education while respecting students' diverse cultures">
+                            تقديم تعليم إسلامي أصيل مع احترام ثقافات الطلاب المختلفة
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title" data-ar="ما نقدمه: نتائج واضحة لكل برنامج" data-en="What We Offer: Clear Outcomes for Each Program">
+                    ما نقدمه: نتائج واضحة لكل برنامج
+                </h2>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <h3 class="service-title" data-ar="اللغة العربية" data-en="Arabic Language">
+                            اللغة العربية
+                        </h3>
+                        <p data-ar="برنامج متكامل لتعلم العربية من الصفر" 
+                           data-en="Complete program for learning Arabic from scratch">
+                            برنامج متكامل لتعلم العربية من الصفر
+                        </p>
+                        
+                        <div class="learning-outcomes">
+                            <h4><i class="fas fa-bullseye"></i> <span data-ar="ستتعلم:" data-en="You will learn:">ستتعلم:</span></h4>
+                            <ul>
+                                <li data-ar="قراءة الحروف والكلمات بثقة" data-en="Reading letters and words with confidence">قراءة الحروف والكلمات بثقة</li>
+                                <li data-ar="تكوين جمل بسيطة للتعبير اليومي" data-en="Forming simple sentences for daily expression">تكوين جمل بسيطة للتعبير اليومي</li>
+                                <li data-ar="فهم المحادثة اليومية الأساسية" data-en="Understanding basic daily conversation">فهم المحادثة اليومية الأساسية</li>
+                                <li data-ar="أسس القواعد العربية المبسطة" data-en="Basics of simplified Arabic grammar">أسس القواعد العربية المبسطة</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-quran"></i>
+                        </div>
+                        <h3 class="service-title" data-ar="تعلم القرآن" data-en="Quran Learning">
+                            تعلم القرآن
+                        </h3>
+                        <p data-ar="تعلم القراءة الصحيحة والتجويد الأساسي" 
+                           data-en="Learn correct reading and basic Tajweed">
+                            تعلم القراءة الصحيحة والتجويد الأساسي
+                        </p>
+                        
+                        <div class="learning-outcomes">
+                            <h4><i class="fas fa-bullseye"></i> <span data-ar="ستحقق:" data-en="You will achieve:">ستحقق:</span></h4>
+                            <ul>
+                                <li data-ar="نطق سليم للحروف العربية" data-en="Correct pronunciation of Arabic letters">نطق سليم للحروف العربية</li>
+                                <li data-ar="قراءة صحيحة بدون لحن" data-en="Correct reading without mistakes">قراءة صحيحة بدون لحن</li>
+                                <li data-ar="أساس قوي في قواعد التجويد" data-en="Strong foundation in Tajweed rules">أساس قوي في قواعد التجويد</li>
+                                <li data-ar="القدرة على قراءة أي سورة بثقة" data-en="Ability to read any Surah with confidence">القدرة على قراءة أي سورة بثقة</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-mosque"></i>
+                        </div>
+                        <h3 class="service-title" data-ar="الدراسات الإسلامية" data-en="Islamic Studies">
+                            الدراسات الإسلامية
+                        </h3>
+                        <p data-ar="المعارف الإسلامية الأساسية بطريقة مبسطة" 
+                           data-en="Basic Islamic knowledge in a simplified way">
+                            المعارف الإسلامية الأساسية بطريقة مبسطة
+                        </p>
+                        
+                        <div class="learning-outcomes">
+                            <h4><i class="fas fa-bullseye"></i> <span data-ar="ستفهم:" data-en="You will understand:">ستفهم:</span></h4>
+                            <ul>
+                                <li data-ar="أصول الإسلام والعقيدة الصحيحة" data-en="Fundamentals of Islam and correct creed">أصول الإسلام والعقيدة الصحيحة</li>
+                                <li data-ar="العبادات بطريقة عملية مبسطة" data-en="Worship in a practical simplified way">العبادات بطريقة عملية مبسطة</li>
+                                <li data-ar="السيرة النبوية وأخلاق الإسلام" data-en="Prophetic biography and Islamic ethics">السيرة النبوية وأخلاق الإسلام</li>
+                                <li data-ar="المفاهيم الإسلامية الأساسية" data-en="Basic Islamic concepts">المفاهيم الإسلامية الأساسية</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 40px; font-weight: bold; color: var(--primary-color); font-size: 1.2rem;">
+                    <span data-ar="✔️ برامج فردية أو مجمعة متاحة حسب احتياجك" data-en="✔️ Individual or combined programs available based on your needs">
+                        ✔️ برامج فردية أو مجمعة متاحة حسب احتياجك
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRICING SECTION -->
+        <section class="section pricing-section" id="pricing">
+            <div class="container">
+                <h2 class="section-title" data-ar="أسعارنا بسيطة وواضحة" data-en="Simple & Clear Pricing">
+                    أسعارنا بسيطة وواضحة
+                </h2>
+                
+                <div class="pricing-intro">
+                    <p data-ar="مع حصة تجريبية مجانية للتقييم قبل أي التزام. اختر الخطة المناسبة لك وابدأ رحلتك التعليمية اليوم." 
+                       data-en="With a free trial lesson for evaluation before any commitment. Choose the plan that suits you and start your learning journey today.">
+                        مع حصة تجريبية مجانية للتقييم قبل أي التزام. اختر الخطة المناسبة لك وابدأ رحلتك التعليمية اليوم.
+                    </p>
+                </div>
+                
+                <div class="pricing-grid">
+                    <!-- Free Trial Card -->
+                    <div class="pricing-card free">
+                        <div class="pricing-badge" data-ar="مجانية" data-en="FREE">مجانية</div>
+                        <div class="pricing-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <h3 class="pricing-title" data-ar="حصة تجريبية مجانية" data-en="Free Trial Lesson">
+                            حصة تجريبية مجانية
+                        </h3>
+                        <div class="pricing-duration" data-ar="30 دقيقة" data-en="30 minutes">30 دقيقة</div>
+                        
+                        <div class="pricing-price" data-ar="مجاني" data-en="FREE">مجاني</div>
+                        
+                        <ul class="pricing-features">
+                            <li data-ar="للتقييم والتوجيه فقط" data-en="For evaluation and guidance only">للتقييم والتوجيه فقط</li>
+                            <li data-ar="بدون أي التزام مالي" data-en="No financial commitment">بدون أي التزام مالي</li>
+                            <li data-ar="تحديد المستوى التعليمي" data-en="Educational level assessment">تحديد المستوى التعليمي</li>
+                            <li data-ar="التعرف على المعلم وطريقة الشرح" data-en="Meet the teacher and teaching method">التعرف على المعلم وطريقة الشرح</li>
+                            <li data-ar="اقتراح البرنامج المناسب لك" data-en="Suggested program that fits you">اقتراح البرنامج المناسب لك</li>
+                        </ul>
+                        
+                        <button class="btn-primary" id="pricingTrialBtn" style="width: 100%; padding: 18px; margin-top: 20px;"
+                                data-ar="احجز حصتك المجانية" data-en="Book Your Free Lesson">
+                            <i class="fas fa-calendar-check"></i> احجز حصتك المجانية
+                        </button>
+                        
+                        <p class="pricing-note" data-ar="* للحصة التجريبية المجانية فقط" data-en="* For free trial lesson only">
+                            * للحصة التجريبية المجانية فقط
+                        </p>
+                    </div>
+                    
+                    <!-- Paid Lessons Card -->
+                    <div class="pricing-card paid">
+                        <div class="pricing-badge" data-ar="الأكثر طلبًا" data-en="POPULAR">الأكثر طلبًا</div>
+                        <div class="pricing-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3 class="pricing-title" data-ar="الرسوم بعد التجربة" data-en="After Trial Fees">
+                            الرسوم بعد التجربة
+                        </h3>
+                        <div class="pricing-duration" data-ar="اختر المدة المناسبة" data-en="Choose suitable duration">اختر المدة المناسبة</div>
+                        
+                        <div class="pricing-options">
+                            <div class="pricing-option">
+                                <h4 data-ar="الحصة الفردية" data-en="Individual Lesson">الحصة الفردية</h4>
+                                <div class="pricing-duration" data-ar="30 دقيقة" data-en="30 minutes">30 دقيقة</div>
+                                <div class="price">$4</div>
+                                <p data-ar="دولار أمريكي" data-en="US Dollar">دولار أمريكي</p>
+                            </div>
+                            
+                            <div class="pricing-option">
+                                <h4 data-ar="الحصة الفردية" data-en="Individual Lesson">الحصة الفردية</h4>
+                                <div class="pricing-duration" data-ar="60 دقيقة" data-en="60 minutes">60 دقيقة</div>
+                                <div class="price">$8</div>
+                                <p data-ar="دولار أمريكي" data-en="US Dollar">دولار أمريكي</p>
+                            </div>
+                        </div>
+                        
+                        <ul class="pricing-features">
+                            <li data-ar="دروس مباشرة مع معلم مؤهل" data-en="Live lessons with qualified teacher">دروس مباشرة مع معلم مؤهل</li>
+                            <li data-ar="تعليم منظم للناطقين بغير العربية" data-en="Structured teaching for non-Arabic speakers">تعليم منظم للناطقين بغير العربية</li>
+                            <li data-ar="بدون تشتيت أو موسيقى" data-en="No distractions or music">بدون تشتيت أو موسيقى</li>
+                            <li data-ar="جدول مرن حسب وقتك" data-en="Flexible schedule based on your time">جدول مرن حسب وقتك</li>
+                            <li data-ar="متابعة دورية وتقارير تقدم" data-en="Regular follow-up and progress reports">متابعة دورية وتقارير تقدم</li>
+                            <li data-ar="تطبيقات عملية وتمارين تفاعلية" data-en="Practical applications and interactive exercises">تطبيقات عملية وتمارين تفاعلية</li>
+                        </ul>
+                        
+                        <button class="btn-primary" id="startLearningBtn" style="width: 100%; padding: 18px; margin-top: 20px; background: linear-gradient(135deg, var(--price-color), #8e44ad);"
+                                data-ar="ابدأ التعلم الآن" data-en="Start Learning Now">
+                            <i class="fas fa-play-circle"></i> ابدأ التعلم الآن
+                        </button>
+                        
+                        <p class="pricing-note" data-ar="* الأسعار بالدولار الأمريكي - دفعات أسبوعية أو شهرية" data-en="* Prices in US Dollar - Weekly or monthly payments">
+                            * الأسعار بالدولار الأمريكي - دفعات أسبوعية أو شهرية
+                        </p>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 50px; padding: 25px; background: white; border-radius: var(--border-radius); box-shadow: var(--box-shadow);">
+                    <h3 style="color: var(--primary-color); margin-bottom: 15px;" data-ar="🔹 ملاحظات مهمة حول الأسعار" data-en="🔹 Important Notes About Pricing">
+                        🔹 ملاحظات مهمة حول الأسعار
+                    </h3>
+                    <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; text-align: right;">
+                        <div style="flex: 1; min-width: 250px;">
+                            <p data-ar="✔️ لا توجد عقود طويلة الأجل" data-en="✔️ No long-term contracts">✔️ لا توجد عقود طويلة الأجل</p>
+                            <p data-ar="✔️ يمكنك التوقف في أي وقت" data-en="✔️ You can stop at any time">✔️ يمكنك التوقف في أي وقت</p>
+                            <p data-ar="✔️ خصم خاص للعائلات (أكثر من طالب)" data-en="✔️ Special discount for families (multiple students)">✔️ خصم خاص للعائلات (أكثر من طالب)</p>
+                        </div>
+                        <div style="flex: 1; min-width: 250px;">
+                            <p data-ar="✔️ نفس المعلم طوال البرنامج" data-en="✔️ Same teacher throughout the program">✔️ نفس المعلم طوال البرنامج</p>
+                            <p data-ar="✔️ مواد تعليمية مجانية إضافية" data-en="✔️ Free additional educational materials">✔️ مواد تعليمية مجانية إضافية</p>
+                            <p data-ar="✔️ دعم فني مجاني على مدار الساعة" data-en="✔️ Free technical support 24/7">✔️ دعم فني مجاني على مدار الساعة</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Suitability Section -->
+        <section class="section" id="suitability">
+            <div class="container">
+                <h2 class="section-title" data-ar="هل هذه المنصة مناسبة لك؟" data-en="Is This Platform Right For You?">
+                    هل هذه المنصة مناسبة لك؟
+                </h2>
+                
+                <div class="suitability-grid">
+                    <div class="suitability-card yes">
+                        <div class="suitability-header">
+                            <div class="suitability-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <h3 data-ar="✔️ نعم، إذا كنت:" data-en="✔️ Yes, if you:">✔️ نعم، إذا كنت:</h3>
+                        </div>
+                        <ul class="suitability-list">
+                            <li data-ar="تريد تعلم العربية من الصفر" data-en="Want to learn Arabic from scratch">
+                                تريد تعلم العربية من الصفر
+                            </li>
+                            <li data-ar="تبحث عن تعليم منظم ومحترم" data-en="Looking for structured and respectful education">
+                                تبحث عن تعليم منظم ومحترم
+                            </li>
+                            <li data-ar="مستعد للالتزام والمواظبة" data-en="Ready to commit and be consistent">
+                                مستعد للالتزام والمواظبة
+                            </li>
+                            <li data-ar="تريد فهم القرآن بلغته الأصلية" data-en="Want to understand Quran in its original language">
+                                تريد فهم القرآن بلغته الأصلية
+                            </li>
+                            <li data-ar="تبحث عن بيئة تعليمية هادئة ومناسبة للأسرة" data-en="Looking for a calm, family-friendly learning environment">
+                                تبحث عن بيئة تعليمية هادئة ومناسبة للأسرة
+                            </li>
+                            <li data-ar="تبحث عن تعليم عالي الجودة بسعر عادل" data-en="Looking for high-quality education at a fair price">
+                                <strong>تبحث عن تعليم عالي الجودة بسعر عادل</strong>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="suitability-card no">
+                        <div class="suitability-header">
+                            <div class="suitability-icon">
+                                <i class="fas fa-times-circle"></i>
+                            </div>
+                            <h3 data-ar="❌ لا، إذا كنت:" data-en="❌ No, if you:">❌ لا، إذا كنت:</h3>
+                        </div>
+                        <ul class="suitability-list">
+                            <li data-ar="تبحث عن نتائج سريعة بدون التزام حقيقي" data-en="Looking for quick results without real commitment">
+                                تبحث عن نتائج سريعة بدون التزام حقيقي
+                            </li>
+                            <li data-ar="تريد مجرد تجربة عابرة" data-en="Just want a casual trial">
+                                تريد مجرد تجربة عابرة
+                            </li>
+                            <li data-ar="لا تستطيع الالتزام بجدول منتظم" data-en="Cannot commit to a regular schedule">
+                                لا تستطيع الالتزام بجدول منتظم
+                            </li>
+                            <li data-ar="تبحث عن تعلم ترفيهي غير أكاديمي" data-en="Looking for entertainment-based, non-academic learning">
+                                تبحث عن تعلم ترفيهي غير أكاديمي
+                            </li>
+                            <li data-ar="لا تمانع في وجود موسيقى أو محتوى غير لائق" data-en="Don't mind having music or inappropriate content">
+                                لا تمانع في وجود موسيقى أو محتوى غير لائق
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="suitability-cta">
+                    <h3 data-ar="ما هو قرارك؟" data-en="What's your decision?">
+                        ما هو قرارك؟
+                    </h3>
+                    <div class="suitability-buttons">
+                        <button class="suitability-btn suitability-btn-primary" id="suitabilityYesBtn" data-ar="نعم، هذه المنصة مناسبة لي → ابدأ بالتوجيه المجاني" data-en="Yes, this platform is right for me → Start with Free Guidance">
+                            <i class="fas fa-rocket"></i> نعم، هذه المنصة مناسبة لي → ابدأ بالتوجيه المجاني
+                        </button>
+                        <a href="#faq" class="suitability-btn suitability-btn-secondary" data-ar="لست متأكدًا؟ اطلع على الأسئلة الشائعة" data-en="Not sure? Check the FAQ">
+                            <i class="fas fa-question-circle"></i> لست متأكدًا؟ اطلع على الأسئلة الشائعة
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="suitability-note">
+                    <p data-ar="<span class='highlight'>نحن نركز على الجودة وليس الكمية.</span> نختار الطلاب الجادين فقط لضمان أفضل النتائج لك ولهم." 
+                       data-en="<span class='highlight'>We focus on quality, not quantity.</span> We select only serious students to ensure the best results for you and them.">
+                        <span class="highlight">نحن نركز على الجودة وليس الكمية.</span> نختار الطلاب الجادين فقط لضمان أفضل النتائج لك ولهم.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="section" style="background-color: #f9f9f9;" id="faq">
+            <div class="container">
+                <h2 class="section-title" data-ar="أسئلة شائعة (FAQ)" data-en="Frequently Asked Questions (FAQ)">
+                    أسئلة شائعة (FAQ)
+                </h2>
+                
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span data-ar="كيف أحجز الحصة التجريبية المجانية؟" data-en="How do I book the free trial lesson?">كيف أحجز الحصة التجريبية المجانية؟</span>
+                            <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <span data-ar="انقر على أي زر 'حصة تجريبية مجانية' في الموقع، املأ النموذج البسيط، وسنتصل بك خلال 24 ساعة لتحديد الموعد المناسب لك." 
+                                  data-en="Click any 'Free Trial Lesson' button on the site, fill out the simple form, and we'll contact you within 24 hours to schedule the appropriate time for you.">
+                                انقر على أي زر 'حصة تجريبية مجانية' في الموقع، املأ النموذج البسيط، وسنتصل بك خلال 24 ساعة لتحديد الموعد المناسب لك.
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span data-ar="كم مدة الوصول لمستوى القراءة؟" data-en="How long to reach reading level?">كم مدة الوصول لمستوى القراءة؟</span>
+                            <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <span data-ar="مع الالتزام بحصتين أسبوعيًا، معظم الطلاب يقرؤون الكلمات البسيطة خلال 6-8 أسابيع، والقراءة بطلاقة خلال 4-6 أشهر." 
+                                  data-en="With commitment to two weekly sessions, most students read simple words within 6-8 weeks, and read fluently within 4-6 months.">
+                                مع الالتزام بحصتين أسبوعيًا، معظم الطلاب يقرؤون الكلمات البسيطة خلال 6-8 أسابيع، والقراءة بطلاقة خلال 4-6 أشهر.
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span data-ar="هل يمكنني اختيار مدة الحصة (30 أو 60 دقيقة)؟" data-en="Can I choose lesson duration (30 or 60 minutes)?">هل يمكنني اختيار مدة الحصة (30 أو 60 دقيقة)؟</span>
+                            <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <span data-ar="نعم، يمكنك اختيار المدة المناسبة لك (30 دقيقة بـ 4$ أو 60 دقيقة بـ 8$). ننصح المبتدئين بالبدء بـ 30 دقيقة، والمتقدمين بـ 60 دقيقة." 
+                                  data-en="Yes, you can choose the duration that suits you (30 minutes for $4 or 60 minutes for $8). We recommend beginners start with 30 minutes, and advanced students with 60 minutes.">
+                                نعم، يمكنك اختيار المدة المناسبة لك (30 دقيقة بـ 4$ أو 60 دقيقة بـ 8$). ننصح المبتدئين بالبدء بـ 30 دقيقة، والمتقدمين بـ 60 دقيقة.
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span data-ar="هل أدفع أسبوعيًا أم شهريًا؟" data-en="Do I pay weekly or monthly?">هل أدفع أسبوعيًا أم شهريًا؟</span>
+                            <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <span data-ar="نقدم مرونة في الدفع: يمكنك الدفع أسبوعيًا أو شهريًا حسب ما يناسبك. ننصح بالدفع الشهري للحصول على أفضل متابعة وتقدم مستمر." 
+                                  data-en="We offer payment flexibility: you can pay weekly or monthly as it suits you. We recommend monthly payment for the best follow-up and continuous progress.">
+                                نقدم مرونة في الدفع: يمكنك الدفع أسبوعيًا أو شهريًا حسب ما يناسبك. ننصح بالدفع الشهري للحصول على أفضل متابعة وتقدم مستمر.
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span data-ar="هل المعلم نفسُه دائمًا؟" data-en="Is it always the same teacher?">هل المعلم نفسُه دائمًا؟</span>
+                            <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <span data-ar="نعم، نحن نؤمن بأهمية الاستمرارية. يكون لديك معلم رئيسي ثابت، مع إمكانية وجود معلم بديل في حالات الطوارئ فقط." 
+                                  data-en="Yes, we believe in continuity. You have a fixed main teacher, with the possibility of a substitute teacher only in emergencies.">
+                                نعم، نحن نؤمن بأهمية الاستمرارية. يكون لديك معلم رئيسي ثابت، مع إمكانية وجود معلم بديل في حالات الطوارئ فقط.
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span data-ar="هل يمكن تغيير الجدول؟" data-en="Can I change the schedule?">هل يمكن تغيير الجدول؟</span>
+                            <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <span data-ar="نعم، يمكن تعديل الجدول وفقًا لظروفك بعد التنسيق مع المعلم، مع الحفاظ على نفس عدد الحصص الأسبوعية." 
+                                  data-en="Yes, the schedule can be adjusted according to your circumstances after coordination with the teacher, while maintaining the same number of weekly sessions.">
+                                نعم، يمكن تعديل الجدول وفقًا لظروفك بعد التنسيق مع المعلم، مع الحفاظ على نفس عدد الحصص الأسبوعية.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="section" id="apply">
+            <div class="container">
+                <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                    <h2 class="section-title" data-ar="جاهز لبدء رحلتك التعليمية؟" data-en="Ready to Start Your Learning Journey?">
+                        جاهز لبدء رحلتك التعليمية؟
+                    </h2>
+                    
+                    <p style="font-size: 1.3rem; margin-bottom: 30px;">
+                        <span data-ar="ابدأ بحصة تجريبية مجانية اليوم، ثم اختر الخطة المناسبة لميزانيتك وجدولك." 
+                              data-en="Start with a free trial lesson today, then choose the plan that fits your budget and schedule.">
+                            ابدأ بحصة تجريبية مجانية اليوم، ثم اختر الخطة المناسبة لميزانيتك وجدولك.
+                        </span>
+                    </p>
+                    
+                    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin: 40px 0;">
+                        <button class="btn-primary" id="finalTrialBtn" style="font-size: 1.3rem; padding: 20px 40px;">
+                            <i class="fas fa-graduation-cap"></i> 
+                            <span data-ar="🎯 احجز حصتك المجانية الآن" data-en="🎯 Book Your Free Lesson Now">🎯 احجز حصتك المجانية الآن</span>
+                        </button>
+                        
+                        <a href="#pricing" class="btn-secondary" style="font-size: 1.3rem; padding: 20px 40px; border-color: var(--primary-color); color: var(--primary-color);">
+                            <i class="fas fa-tags"></i> 
+                            <span data-ar="💰 شاهد خطط الأسعار" data-en="💰 View Pricing Plans">💰 شاهد خطط الأسعار</span>
+                        </a>
+                    </div>
+                    
+                    <p style="color: #666; font-style: italic; margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: var(--border-radius);">
+                        <span data-ar="نرجو التقديم فقط إذا كنت جادًا في التعلم وملتزمًا بالبرنامج. نحن نركز على الجودة وليس الكمية." 
+                              data-en="Please apply only if you are serious about learning and committed to the program. We focus on quality, not quantity.">
+                            نرجو التقديم فقط إذا كنت جادًا في التعلم وملتزمًا بالبرنامج. نحن نركز على الجودة وليس الكمية.
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div style="flex: 1;">
+                    <div class="footer-logo">Arabic in Minutes</div>
+                    <p data-ar="أكاديمية تعليم العربية والقرآن والعلوم الإسلامية عبر الإنترنت" 
+                       data-en="Online Arabic, Quran & Islamic Studies Academy">
+                        أكاديمية تعليم العربية والقرآن والعلوم الإسلامية عبر الإنترنت
+                    </p>
+                </div>
+                
+                <div style="flex: 1;">
+                    <div class="footer-links">
+                        <a href="https://www.youtube.com/@ArabicinMinutess" target="_blank"><i class="fab fa-youtube"></i> 
+                            <span data-ar="قناة اليوتيوب" data-en="YouTube Channel">قناة اليوتيوب</span>
+                        </a>
+                        <a href="https://forms.gle/example" target="_blank"><i class="fas fa-envelope"></i> 
+                            <span data-ar="نموذج الاتصال" data-en="Contact Form">نموذج الاتصال</span>
+                        </a>
+                        <a href="#pricing"><i class="fas fa-tag"></i> 
+                            <span data-ar="الأسعار" data-en="Pricing">الأسعار</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2023 Arabic in Minutes. <span data-ar="جميع الحقوق محفوظة." data-en="All rights reserved.">جميع الحقوق محفوظة.</span></p>
+                <p style="margin-top: 10px; font-size: 0.8rem;">
+                    <span data-ar="تعليم إسلامي أصيل — لا موسيقى — بيئة محترمة للأسرة" 
+                          data-en="Authentic Islamic Education — No Music — Family-Friendly Environment">
+                        تعليم إسلامي أصيل — لا موسيقى — بيئة محترمة للأسرة
+                    </span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for Trial Lesson -->
+    <div class="modal-overlay" id="trialModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h2 style="color: var(--primary-color); margin-bottom: 20px; text-align: center;" 
+                data-ar="احجز حصة تجريبية مجانية" 
+                data-en="Book a Free Trial Lesson">
+                احجز حصة تجريبية مجانية
+            </h2>
+            
+            <!-- النص الترويجي المطلوب -->
+            <p style="text-align: center; margin-bottom: 20px; font-size: 1.1rem; line-height: 1.6; color: #444;">
+                <span data-ar="بادر بدعم أبنائك اليوم واحصل على حصة تجريبية مجانية.<br>يرجى تعبئة بياناتك أدناه، وسيقوم فريقنا بالتواصل معك عبر تطبيق واتساب لتنسيق موعد الحصة التجريبية المجانية." 
+                      data-en="Take the initiative to support your children today and get a free trial lesson.<br>Please fill in your details below, and our team will contact you via WhatsApp to schedule your free trial lesson.">
+                    بادر بدعم أبنائك اليوم واحصل على حصة تجريبية مجانية.<br>يرجى تعبئة بياناتك أدناه، وسيقوم فريقنا بالتواصل معك عبر تطبيق واتساب لتنسيق موعد الحصة التجريبية المجانية.
+                </span>
+            </p>
+            
+            <form id="trialForm">
+                <div style="margin-bottom: 15px;">
+                    <input type="text" name="name"
+                           data-ar-placeholder="الاسم الكامل" 
+                           data-en-placeholder="Full Name"
+                           placeholder="الاسم الكامل" 
+                           style="width: 100%; padding: 15px; margin-bottom: 5px; border: 1px solid #ddd; border-radius: 5px;" 
+                           required>
+                    <small style="color: #666; font-size: 0.9rem;" 
+                           data-ar="* الاسم الحقيقي يفضل للتواصل الرسمي" 
+                           data-en="* Real name preferred for official communication">* الاسم الحقيقي يفضل للتواصل الرسمي</small>
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <input type="email" name="email"
+                           data-ar-placeholder="البريد الإلكتروني" 
+                           data-en-placeholder="Email Address"
+                           placeholder="البريد الإلكتروني" 
+                           style="width: 100%; padding: 15px; margin-bottom: 5px; border: 1px solid #ddd; border-radius: 5px;" 
+                           required>
+                    <small style="color: #666; font-size: 0.9rem;" 
+                           data-ar="* سنتواصل معك عبر البريد الإلكتروني والواتساب" 
+                           data-en="* We will contact you via email and WhatsApp">* سنتواصل معك عبر البريد الإلكتروني والواتساب</small>
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <input type="tel" name="phone"
+                           data-ar-placeholder="رقم الواتساب (مطلوب)" 
+                           data-en-placeholder="WhatsApp Number (Required)"
+                           placeholder="رقم الواتساب (مطلوب)" 
+                           style="width: 100%; padding: 15px; margin-bottom: 5px; border: 1px solid #ddd; border-radius: 5px;" 
+                           required>
+                    <small style="color: #666; font-size: 0.9rem;" 
+                           data-ar="* التواصل الرئيسي سيكون عبر واتساب" 
+                           data-en="* Main communication will be via WhatsApp">* التواصل الرئيسي سيكون عبر واتساب</small>
+                </div>
+                
+                <input type="text" name="country"
+                       data-ar-placeholder="اسم الدولة" 
+                       data-en-placeholder="Country Name"
+                       placeholder="اسم الدولة" 
+                       style="width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 5px;"
+                       required>
+                
+                <textarea name="message" rows="3"
+                          data-ar-placeholder="رسالة إضافية أو أسئلة (اختياري)" 
+                          data-en-placeholder="Additional message or questions (Optional)"
+                          placeholder="رسالة إضافية أو أسئلة (اختياري)" 
+                          style="width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 5px;"></textarea>
+                
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin-bottom: 20px; font-size: 0.9rem; color: #666;">
+                    <span data-ar="✔️ سنتصل بك خلال 24 ساعة عبر واتساب لتأكيد الموعد" 
+                          data-en="✔️ We'll contact you within 24 hours via WhatsApp to confirm">✔️ سنتصل بك خلال 24 ساعة عبر واتساب لتأكيد الموعد</span>
+                </div>
+                
+                <button type="submit" style="width: 100%; padding: 18px; background: linear-gradient(135deg, var(--success-color), #27ae60); color: white; border: none; border-radius: 5px; font-size: 1.1rem; font-weight: bold; cursor: pointer; margin-top: 10px;">
+                    <i class="fas fa-user-plus"></i> 
+                    <span data-ar="اشترك الآن" data-en="Subscribe Now">اشترك الآن</span>
+                </button>
+            </form>
+            
+            <!-- Loading Spinner -->
+            <div class="loading-spinner" id="loadingSpinner">
+                <div class="spinner"></div>
+                <p id="loadingText" data-ar="جاري إرسال طلبك..." data-en="Sending your request...">جاري إرسال طلبك...</p>
+            </div>
+            
+            <p style="text-align: center; margin-top: 20px; color: #666; font-size: 0.9rem;">
+                <span data-ar="سيقوم فريقنا بالاتصال بك خلال 24 ساعة عبر واتساب والبريد الإلكتروني." 
+                      data-en="Our team will contact you within 24 hours via WhatsApp and email.">
+                    سيقوم فريقنا بالاتصال بك خلال 24 ساعة عبر واتساب والبريد الإلكتروني.
+                </span>
+            </p>
+        </div>
+    </div>
+
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    
+    <script>
+        // ====================
+        // 1. EMAILJS CONFIGURATION
+        // ====================
+        emailjs.init("IR7h1eHCIsLGVw06M");
+        
+        const EMAILJS_SERVICE = "service_f1zt39e";
+        const EMAILJS_TEMPLATES = {
+            ar: "template_vdf8dlz",    // Template عربي
+            en: "template_41sx4k2"     // Template إنجليزي
+        };
+        
+        // ====================
+        // 2. LANGUAGE MANAGEMENT
+        // ====================
+        const langButtons = document.querySelectorAll('.lang-btn');
+        const body = document.body;
+        
+        function isArabic() {
+            return body.classList.contains('arabic');
+        }
+        
+        function getCurrentLang() {
+            return isArabic() ? 'ar' : 'en';
+        }
+        
+        langButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                langButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                const lang = button.dataset.lang;
+                body.classList.remove('arabic', 'english');
+                body.classList.add(lang === 'ar' ? 'arabic' : 'english');
+                
+                updateLanguage(lang);
+            });
+        });
+        
+        function updateLanguage(lang) {
+            // Update text content
+            document.querySelectorAll('[data-ar], [data-en]').forEach(element => {
+                const text = element.dataset[lang];
+                if (text) {
+                    if (text.includes('<') && text.includes('>')) {
+                        element.innerHTML = text;
+                    } else {
+                        element.textContent = text;
+                    }
+                }
+            });
+            
+            // Update placeholders
+            document.querySelectorAll('[data-ar-placeholder], [data-en-placeholder]').forEach(input => {
+                const placeholder = lang === 'ar' ? input.dataset.arPlaceholder : input.dataset.enPlaceholder;
+                if (placeholder) input.placeholder = placeholder;
+            });
+            
+            // Update select options
+            document.querySelectorAll('option[data-ar], option[data-en]').forEach(option => {
+                const text = option.dataset[lang];
+                if (text) option.textContent = text;
+            });
+        }
+        
+        // ====================
+        // 3. MODAL FUNCTIONS
+        // ====================
+        function openModal() {
+            document.getElementById('trialModal').style.display = 'flex';
+            // Reset form
+            document.getElementById('trialForm').reset();
+        }
+        
+        function closeModal() {
+            document.getElementById('trialModal').style.display = 'none';
+            hideLoading();
+        }
+        
+        function showLoading() {
+            document.getElementById('loadingSpinner').style.display = 'block';
+            document.getElementById('trialForm').style.opacity = '0.5';
+            document.getElementById('trialForm').style.pointerEvents = 'none';
+        }
+        
+        function hideLoading() {
+            document.getElementById('loadingSpinner').style.display = 'none';
+            document.getElementById('trialForm').style.opacity = '1';
+            document.getElementById('trialForm').style.pointerEvents = 'auto';
+        }
+        
+        // ESC to close modal
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+        
+        // ====================
+        // 4. FORM VALIDATION & SUBMISSION
+        // ====================
+        document.getElementById('trialForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Basic validation
+            const name = this.querySelector('[name="name"]').value.trim();
+            const email = this.querySelector('[name="email"]').value.trim();
+            const phone = this.querySelector('[name="phone"]').value.trim();
+            const country = this.querySelector('[name="country"]').value.trim();
+            
+            if (!name || !email || !phone || !country) {
+                alert(isArabic() ? 
+                    '❌ الرجاء تعبئة جميع الحقول المطلوبة' : 
+                    '❌ Please fill all required fields');
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert(isArabic() ? 
+                    '❌ البريد الإلكتروني غير صحيح' : 
+                    '❌ Invalid email address');
+                return;
+            }
+            
+            // Phone validation (basic check for numbers)
+            const phoneRegex = /^[+]?[0-9\s\-\(\)]+$/;
+            if (!phoneRegex.test(phone)) {
+                alert(isArabic() ? 
+                    '❌ رقم الهاتف غير صحيح' : 
+                    '❌ Invalid phone number');
+                return;
+            }
+            
+            // Show loading
+            showLoading();
+            
+            try {
+                // Send to EmailJS
+                const templateId = isArabic() ? EMAILJS_TEMPLATES.ar : EMAILJS_TEMPLATES.en;
+                
+                // Add current date to form data
+                const formData = new FormData(this);
+                formData.append('date', new Date().toLocaleDateString());
+                
+                const result = await emailjs.send(
+                    EMAILJS_SERVICE,
+                    templateId,
+                    {
+                        name: formData.get('name'),
+                        email: formData.get('email'),
+                        phone: formData.get('phone'),
+                        country: formData.get('country'),
+                        message: formData.get('message') || 'N/A',
+                        date: formData.get('date')
+                    }
+                );
+                
+                // Success
+                console.log('EmailJS Success:', result);
+                
+                // Show success message
+                if (isArabic()) {
+                    alert('✅ تم تسجيل طلبك بنجاح!\n\nسنتواصل معك خلال 24 ساعة عبر واتساب والبريد الإلكتروني.\n\nشكراً لتسجيلك في الحصة التجريبية المجانية.');
+                } else {
+                    alert('✅ Your request has been successfully registered!\n\nWe will contact you within 24 hours via WhatsApp and email.\n\nThank you for registering for the free trial lesson.');
+                }
+                
+                // Reset form and close modal
+                this.reset();
+                closeModal();
+                
+                // Optional: Save to localStorage as backup
+                saveFormBackup({
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    phone: formData.get('phone'),
+                    country: formData.get('country'),
+                    message: formData.get('message') || 'N/A',
+                    timestamp: new Date().toISOString(),
+                    language: getCurrentLang()
+                });
+                
+            } catch (error) {
+                console.error('EmailJS Error:', error);
+                
+                // Fallback: Save to localStorage as backup
+                saveFormBackup({
+                    name: this.querySelector('[name="name"]').value,
+                    email: this.querySelector('[name="email"]').value,
+                    phone: this.querySelector('[name="phone"]').value,
+                    country: this.querySelector('[name="country"]').value,
+                    message: this.querySelector('[name="message"]').value || 'N/A',
+                    timestamp: new Date().toISOString(),
+                    language: getCurrentLang()
+                });
+                
+                // Show error message
+                if (isArabic()) {
+                    alert('⚠️ حدث خطأ تقني، لكن طلبك تم حفظه.\n\nسنتواصل معك خلال 24 ساعة عبر واتساب والبريد الإلكتروني.');
+                } else {
+                    alert('⚠️ Technical error occurred, but your request was saved.\n\nWe will contact you within 24 hours via WhatsApp and email.');
+                }
+                
+                closeModal();
+            }
+        });
+        
+        // ====================
+        // 5. BACKUP SYSTEM (Optional)
+        // ====================
+        function saveFormBackup(formData) {
+            // Save to localStorage
+            const backups = JSON.parse(localStorage.getItem('trialRequests') || '[]');
+            backups.push(formData);
+            localStorage.setItem('trialRequests', JSON.stringify(backups.slice(-10))); // Keep last 10
+            
+            // Log to console for debugging
+            console.log('Form backup saved:', formData);
+        }
+        
+        // ====================
+        // 6. EVENT LISTENERS
+        // ====================
+        // Trial buttons
+        document.getElementById('trialBtn').addEventListener('click', openModal);
+        document.getElementById('trialHeroBtn').addEventListener('click', openModal);
+        document.getElementById('finalTrialBtn').addEventListener('click', openModal);
+        document.getElementById('pricingTrialBtn').addEventListener('click', openModal);
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target.id === 'trialModal') closeModal();
+        });
+        
+        // FAQ toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Suitability button
+        document.getElementById('suitabilityYesBtn').addEventListener('click', function() {
+            const applySection = document.getElementById('apply');
+            if (applySection) {
+                window.scrollTo({
+                    top: applySection.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+                applySection.style.backgroundColor = '#f0f7ff';
+                setTimeout(() => applySection.style.backgroundColor = '', 2000);
+            }
+            
+            if (isArabic()) {
+                alert('أحسنت! سينقلك الزر إلى قسم التقديم للحصول على توجيه مجاني. 👌');
+            } else {
+                alert('Great! The button will take you to the application section for free guidance. 👌');
+            }
+        });
+        
+        // Pricing button
+        document.getElementById('startLearningBtn').addEventListener('click', function() {
+            if (isArabic()) {
+                alert('بعد الحصة التجريبية المجانية، يمكنك اختيار خطة الدروس المناسبة لك (30 دقيقة بـ 4$ أو 60 دقيقة بـ 8$).');
+            } else {
+                alert('After the free trial lesson, you can choose the suitable lesson plan (30 minutes for $4 or 60 minutes for $8).');
+            }
+        });
+        
+        // ====================
+        // 7. INITIALIZATION
+        // ====================
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set initial language
+            const currentLang = isArabic() ? 'ar' : 'en';
+            updateLanguage(currentLang);
+            
+            // Update language switcher
+            langButtons.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === currentLang);
+            });
+            
+            // Test EmailJS connection
+            console.log('EmailJS initialized:', emailjs);
+            
+            // Check for backups
+            const backups = JSON.parse(localStorage.getItem('trialRequests') || '[]');
+            if (backups.length > 0) {
+                console.log(`${backups.length} form backups found`);
+            }
+        });
+    </script>
 </body>
 </html>
