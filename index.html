@@ -1135,13 +1135,30 @@
         }
 
         .trial-text {
-            font-size: 0.8rem;
+            font-size: 1.0rem;
             font-weight: 600;
             line-height: 1.25;
             text-align: center;
             max-width: 60px;
             color: var(--dark-text);
         }
+
+
+@media (max-width: 768px) {
+    .trial-text {
+        font-size: 0.6rem;
+        font-weight: 600;
+        line-height: 1.05;
+        letter-spacing: 0.2px;
+    }
+
+    .floating-trial-btn {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+
 
         .cta-hint {
             position: absolute;
