@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Noorani - تعلم العربية والقرآن والعلوم الإسلامية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta name="description" content="Noorani Academy — Learn Arabic, Quran, and Islamic Studies online with qualified teachers. Free trial lesson available.">
     <style>
         :root {
             --primary-color: #1a5f7a;
@@ -1114,6 +1115,18 @@
             z-index: 999;
             box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
             cursor: pointer;
+    /* 👇 الإضافات دي */
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.floating-trial-btn.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
         }
 
         .floating-trial-btn > i {
@@ -1275,7 +1288,7 @@
             <div class="logo">
                 <i class="fas fa-globe"></i>
                 <span 
-                    data-ar="اكاديمية نوراني" 
+                    data-ar="أكاديمية نوراني" 
                     data-en="Noorani Academy">
                     Noorani Academy
                 </span>
@@ -1859,7 +1872,7 @@ We do not offer group classes, as we focus on personalized instruction to ensure
         <div class="container">
             <div class="footer-content">
                 <div style="flex: 1;">
-                    <div class="footer-logo">Noorani</div>
+                    <div class="footer-logo">Noorani Academy</div>
                     <p data-ar="أكاديمية تعليم العربية والقرآن والعلوم الإسلامية عبر الإنترنت" 
                        data-en="Online Arabic, Quran & Islamic Studies Academy">
                         أكاديمية تعليم العربية والقرآن والعلوم الإسلامية عبر الإنترنت
@@ -2317,6 +2330,26 @@ We do not offer group classes, as we focus on personalized instruction to ensure
                 if (hint) hint.style.display = 'none';
             }, 6000);
         });
+// Show floating CTA after scrolling
+window.addEventListener('scroll', () => {
+    const trialBtn = document.getElementById('trialBtn');
+    if (!trialBtn) return;
+
+    if (window.scrollY > 300) {
+        trialBtn.classList.add('show');
+    }
+});
+window.addEventListener('scroll', () => {
+    const trialBtn = document.getElementById('trialBtn');
+    if (!trialBtn) return;
+
+    if (window.scrollY > 300) {
+        trialBtn.classList.add('show');
+    } else {
+        trialBtn.classList.remove('show');
+    }
+});
+
     </script>
 </body>
 </html>
