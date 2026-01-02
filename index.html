@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noorani - تعلم العربية والقرآن والعلوم الإسلامية</title>
+    <title>Noorani Academy | Learn Arabic, Quran & Islamic Studies Online</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <meta name="description" content="Noorani Academy — Learn Arabic, Quran, and Islamic Studies online with qualified teachers. Free trial lesson available.">
     <style>
@@ -1127,7 +1127,6 @@
     transform: translateY(0);
 }
 
-        }
 
         .floating-trial-btn > i {
             font-size: 1.35rem;
@@ -1275,8 +1274,8 @@
 
         <i class="fas fa-calendar-check"></i>
         <span class="trial-text"
-            data-ar="حصة تجريبية مجانية"
-            data-en="Free Trial Lesson">
+            data-ar="حصة مجانية"
+            data-en="Free Trial">
             حصة تجريبية مجانية
         </span>
     </div>
@@ -1893,7 +1892,7 @@ We do not offer group classes, as we focus on personalized instruction to ensure
             </div>
             
             <div class="copyright">
-                <p>© 2026 Noorani. <span data-ar="جميع الحقوق محفوظة." data-en="All rights reserved.">جميع الحقوق محفوظة.</span></p>
+                <p>© 2026 Noorani Academy. <span data-ar="جميع الحقوق محفوظة." data-en="All rights reserved.">جميع الحقوق محفوظة.</span></p>
                 <p style="margin-top: 10px; font-size: 0.8rem;">
                     <span data-ar="تعليم إسلامي أصيل — بيئة محترمة للأسرة" 
                           data-en="Authentic Islamic Education — Family-Friendly Environment">
@@ -2335,20 +2334,9 @@ window.addEventListener('scroll', () => {
     const trialBtn = document.getElementById('trialBtn');
     if (!trialBtn) return;
 
-    if (window.scrollY > 300) {
-        trialBtn.classList.add('show');
-    }
+    trialBtn.classList.toggle('show', window.scrollY > 300);
 });
-window.addEventListener('scroll', () => {
-    const trialBtn = document.getElementById('trialBtn');
-    if (!trialBtn) return;
 
-    if (window.scrollY > 300) {
-        trialBtn.classList.add('show');
-    } else {
-        trialBtn.classList.remove('show');
-    }
-});
 
     </script>
 </body>
