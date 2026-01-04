@@ -6,7 +6,8 @@
     <title>Nooran Academy | أسلوب تعليم يناسب كل عمر ومرحلة</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta name="description" content="نوران - نرافقك في رحلة تعلم العربية والقرآن بأسلوب يناسب عمرك ومرحلتك. بيئة محترمة لجميع الأعمار.">
-    <style>
+
+<style>
         /* ==================== CSS IMPROVEMENTS ==================== */
         
         /* 1. متغيرات ألوان محسنة مع تدرجات أفضل */
@@ -1996,6 +1997,10 @@
         }
 
         @media (max-width: 768px) {
+            body::before {
+  display: none !important;
+}
+
             body {
                 font-size: 0.95rem;
             }
@@ -2401,9 +2406,36 @@
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
+
+/* ================= FLOATING BUTTONS STACK FIX ================= */
+
+/* Desktop */
+#trialBtn {
+  bottom: 40px;
+  left: 40px;
+}
+
+#whatsappFloatBtn {
+  bottom: 150px; /* فوق زر التجربة */
+  left: 40px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  #trialBtn {
+    bottom: 20px;
+    left: 20px;
+  }
+
+  #whatsappFloatBtn {
+    bottom: 110px; /* فوقه بمسافة مظبوطة */
+    left: 20px;
+  }
+}
+
     </style>
 </head>
-<body class="arabic">
+<body class="arabic" dir="rtl">
     <!-- Language Switcher -->
     <div class="language-switcher">
         <button class="lang-btn active" data-lang="ar">العربية</button>
@@ -2420,13 +2452,24 @@
             حصة<br>مجانية
         </span>
     </div>
+<div class="floating-trial-btn" id="whatsappFloatBtn">
+
+
+    <i class="fab fa-whatsapp"></i>
+    <span class="trial-text"
+          data-ar="تحدث<br>معنا"
+          data-en="Chat<br>Now">
+        تحدث<br>معنا
+    </span>
+</div>
+
 
     <!-- Header Section -->
     <header>
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <i class="fas fa-globe"></i>
+                    <i class="fas fa-graduation-cap"></i>
                     <span 
                         data-ar="أكاديمية نوران" 
                         data-en="Nooran Academy">
@@ -2548,9 +2591,12 @@
                     data-en="💬 Words from Our Students and Their Families">
                     💬 كلمات من طلابنا وعائلاتهم
                 </h2>
-                <p style="text-align:center;color:var(--text-light);font-size:1.2rem;margin-bottom:30px;">
-آراء حقيقية من طلاب وعائلات بدأوا من الصفر
+<p style="text-align:center;color:var(--text-light);font-size:1.2rem;margin-bottom:30px;"
+   data-ar="آراء حقيقية من طلاب وعائلات بدأوا من الصفر"
+   data-en="Real feedback from students and families who started from zero">
+    آراء حقيقية من طلاب وعائلات بدأوا من الصفر
 </p>
+
 
                 <div class="testimonials-grid">
                     <div class="testimonial-card">
@@ -2559,7 +2605,11 @@
                                   data-en="The teacher was very patient with my son. The teaching here is different; it focuses on understanding, not memorization.">
                             </span>
                         </div>
-                        <div class="testimonial-author">أم من كندا</div>
+                        <div class="testimonial-author"
+     data-ar="أم من كندا"
+     data-en="Mother from Canada">
+    أم من كندا
+</div>
                     </div>
                     
                     <div class="testimonial-card">
@@ -2568,7 +2618,11 @@
                                   data-en="I started from zero, and the beginning was difficult. But the teacher understood my fear and walked with me step by step.">
                             </span>
                         </div>
-                        <div class="testimonial-author">طالبة من بريطانيا</div>
+                        <div class="testimonial-author"
+     data-ar="طالبة من بريطانيا"
+     data-en="Student from the UK">
+    طالبة من بريطانيا
+</div>
                     </div>
                     
                     <div class="testimonial-card">
@@ -2577,7 +2631,11 @@
                                   data-en="I thought learning Arabic was difficult and boring, but the teacher made the lesson fun. I feel like I'm really improving.">
                             </span>
                         </div>
-                        <div class="testimonial-author">طالب من أستراليا</div>
+                        <div class="testimonial-author"
+     data-ar="طالب من أستراليا"
+     data-en="Student from Australia">
+    طالب من أستراليا
+</div>
                     </div>
                 </div>
             </div>
@@ -2715,7 +2773,7 @@
                 </div>
                 
                 <div style="text-align: center; margin-top: 60px; padding: 25px; background: rgba(87, 204, 153, 0.1); border-radius: var(--border-radius); border: 1px solid rgba(87, 204, 153, 0.3);">
-                    <span data-ar="🌱 تقدّم ثابت بدل وعود سريعة" data-en="🌱 Steady Progress Instead of Quick Promises" style="font-weight: 700; font-size: 1.4rem; color: var(--accent-color);"></span>
+                    <span data-ar="🌱 التعليم رحلة ثابتة، لا سباق ووعود" data-en="🌱 Learning is a steady journey, not a race or promises" style="font-weight: 700; font-size: 1.4rem; color: var(--accent-color);"></span>
                 </div>
             </div>
         </section>
@@ -2884,11 +2942,16 @@
                                 data-en="✅ Yes, I'm looking for this type of education → Start with the Free Trial">
                             <i class="fas fa-rocket"></i> ✅ نعم، أنا أبحث عن هذا النوع من التعليم → ابدأ بالتجربة المجانية
                         </button>
-                        <a href="#faq" class="suitability-btn suitability-btn-secondary" 
-                           data-ar="🤔 لست متأكدًا؟ تحدث معنا أولًا"
-                           data-en="🤔 Not sure? Talk to us first">
-                            <i class="fas fa-question-circle"></i> 🤔 لست متأكدًا؟ تحدث معنا أولًا
-                        </a>
+<a 
+  href="#"
+  id="whatsappTalkBtn"
+  class="suitability-btn suitability-btn-secondary"
+  data-ar="🤔 لست متأكدًا؟ تحدث معنا أولًا"
+  data-en="🤔 Not sure? Talk to us first">
+    <i class="fab fa-whatsapp"></i> 🤔 لست متأكدًا؟ تحدث معنا أولًا
+</a>
+
+
                     </div>
                 </div>
                 
@@ -3095,6 +3158,7 @@
             
             <div class="modal-form-container">
                 <form id="trialForm" class="compact-form">
+                    <input type="text" name="website" style="display:none">
                     <div class="form-field">
                         <input type="text" name="name"
                                data-ar-placeholder="اسمك الكريم (وأسماء المتعلمين إن أردت)" 
@@ -3163,7 +3227,7 @@
         // ====================
         // 1. EMAILJS CONFIGURATION
         // ====================
-        emailjs.init("IR7h1eHCIsLGVw06M");
+        emailjs.init("RbSNJoA0FrcnryFIC");
         
         const EMAILJS_SERVICE = "service_f1zt39e";
         const EMAILJS_TEMPLATES = {
@@ -3199,6 +3263,8 @@
         });
         
 function updateLanguage(lang) {
+    localStorage.setItem('lang', lang);
+
     // Update text content
     document.querySelectorAll('[data-ar], [data-en]').forEach(element => {
         const text = element.dataset[lang];
@@ -3294,15 +3360,17 @@ function updateLanguage(lang) {
         });
         
         // Close modal when clicking outside
-        window.addEventListener('click', (e) => {
-            if (e.target.id === 'trialModal') closeModal();
-        });
+        document.getElementById('trialModal').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) closeModal();
+});
+
         
         // ====================
         // 4. FORM VALIDATION & SUBMISSION
         // ====================
         document.getElementById('trialForm').addEventListener('submit', async function(e) {
             e.preventDefault();
+            if (this.querySelector('[name="website"]').value !== '') return;
             hideMessage();
             this.querySelector('button[type="submit"]').disabled = true;
 
@@ -3356,7 +3424,7 @@ function updateLanguage(lang) {
                 
                 // Add current date to form data
                 const formData = new FormData(this);
-                formData.append('date', new Date().toLocaleDateString());
+                formData.append('date', new Date().toLocaleString());
                 formData.append('language', getCurrentLang());
                 
                 const result = await emailjs.send(
@@ -3421,20 +3489,53 @@ function updateLanguage(lang) {
         // ====================
         function updateFloatingButton() {
             const trialBtn = document.getElementById('trialBtn');
+            const whatsappBtn = document.getElementById('whatsappFloatBtn');
+
             if (!trialBtn) return;
 
             const scrollPosition = window.scrollY;
 
             // يظهر الزر عندما يتم التمرير 300px أو أكثر
-            if (scrollPosition > 300) {
-                trialBtn.classList.add('visible');
-            } else {
-                trialBtn.classList.remove('visible');
-            }
+if (scrollPosition > 300) {
+    trialBtn.classList.add('visible');
+    whatsappBtn.classList.add('visible');
+} else {
+    trialBtn.classList.remove('visible');
+    whatsappBtn.classList.remove('visible');
+}
+
         }
         
         // ====================
         // 7. EVENT LISTENERS
+        // ====================
+// WHATSAPP BUTTON (AR / EN)
+// ====================
+document.getElementById('whatsappTalkBtn').addEventListener('click', function (e) {
+    e.preventDefault();
+
+    const phone = '201061815595'; // ← حط رقمك هنا بدون +
+    
+    const message = isArabic()
+        ? 'السلام عليكم، حابب استفسر عن دروس أكاديمية نوران'
+        : 'As-salamu alaykum, I would like to ask about Nooran Academy lessons';
+
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+});
+// FLOATING WHATSAPP BUTTON (AR / EN)
+document.getElementById('whatsappFloatBtn').addEventListener('click', function () {
+    const phone = '201061815595';
+    
+    const message = isArabic()
+        ? 'السلام عليكم، حابب استفسر عن دروس أكاديمية نوران'
+        : 'As-salamu alaykum, I would like to ask about Nooran Academy lessons';
+
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+});
+
+
         // ====================
         // Trial buttons
         document.getElementById('trialBtn').addEventListener('click', openModal);
@@ -3495,26 +3596,21 @@ window.addEventListener('scroll', () => {
         // ====================
         // 8. INITIALIZATION
         // ====================
-        document.addEventListener('DOMContentLoaded', function() {
-            body.classList.add('arabic');
+document.addEventListener('DOMContentLoaded', function() {
+    const savedLang = localStorage.getItem('lang') || 'ar';
 
-            // Set initial language
-            const currentLang = isArabic() ? 'ar' : 'en';
-            updateLanguage(currentLang);
-            
-            // Update language switcher
-            langButtons.forEach(btn => {
-                btn.classList.toggle('active', btn.dataset.lang === currentLang);
-            });
-            
-            
+    body.classList.remove('arabic', 'english');
+    body.classList.add(savedLang === 'ar' ? 'arabic' : 'english');
 
-            
-            // Initial floating button state
-            updateFloatingButton();
-            
+    updateLanguage(savedLang);
 
-        });
+    langButtons.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === savedLang);
+    });
+
+    updateFloatingButton();
+});
+
         // ================= SECTION LAZY SHOW =================
 const sectionObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
