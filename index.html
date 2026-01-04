@@ -2412,6 +2412,7 @@
 
     <!-- Floating Trial Button -->
     <div class="floating-trial-btn" id="trialBtn">
+
         <i class="fas fa-calendar-check"></i>
         <span class="trial-text"
            data-ar="حصة<br>مجانية"
@@ -2547,7 +2548,10 @@
                     data-en="💬 Words from Our Students and Their Families">
                     💬 كلمات من طلابنا وعائلاتهم
                 </h2>
-                
+                <p style="text-align:center;color:var(--text-light);font-size:1.2rem;margin-bottom:30px;">
+آراء حقيقية من طلاب وعائلات بدأوا من الصفر
+</p>
+
                 <div class="testimonials-grid">
                     <div class="testimonial-card">
                         <div class="testimonial-text">
@@ -3194,31 +3198,42 @@
             });
         });
         
-        function updateLanguage(lang) {
-            // Update text content
-            document.querySelectorAll('[data-ar], [data-en]').forEach(element => {
-                const text = element.dataset[lang];
-                if (text) {
-                    if (text.includes('<') && text.includes('>')) {
-                        element.innerHTML = text;
-                    } else {
-                        element.textContent = text;
-                    }
-                }
-            });
-            
-            // Update placeholders
-            document.querySelectorAll('[data-ar-placeholder], [data-en-placeholder]').forEach(input => {
-                const placeholder = lang === 'ar' ? input.dataset.arPlaceholder : input.dataset.enPlaceholder;
-                if (placeholder) input.placeholder = placeholder;
-            });
-            
-            // Update select options
-            document.querySelectorAll('option[data-ar], option[data-en]').forEach(option => {
-                const text = option.dataset[lang];
-                if (text) option.textContent = text;
-            });
+function updateLanguage(lang) {
+    // Update text content
+    document.querySelectorAll('[data-ar], [data-en]').forEach(element => {
+        const text = element.dataset[lang];
+        if (text) {
+            if (text.includes('<') && text.includes('>')) {
+                element.innerHTML = text;
+            } else {
+                element.textContent = text;
+            }
         }
+    });
+
+    // Update placeholders
+    document.querySelectorAll('[data-ar-placeholder], [data-en-placeholder]').forEach(input => {
+        const placeholder = lang === 'ar'
+            ? input.dataset.arPlaceholder
+            : input.dataset.enPlaceholder;
+        if (placeholder) input.placeholder = placeholder;
+    });
+
+    // Update select options
+    document.querySelectorAll('option[data-ar], option[data-en]').forEach(option => {
+        const text = option.dataset[lang];
+        if (text) option.textContent = text;
+    });
+
+    // Update html tag
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+}
+
+
+
+            
+
         
         // ====================
         // 3. MODAL FUNCTIONS
@@ -3227,7 +3242,7 @@
             document.getElementById('trialModal').style.display = 'flex';
             document.body.style.overflow = 'hidden';
             // Reset form and hide message
-            document.getElementById('trialForm').reset();
+            
             hideMessage();
             hideLoading();
             
@@ -3328,6 +3343,8 @@
             
             // Show loading
             showLoading();
+            this.querySelector('button[type="submit"]').disabled = true;
+
             
             try {
                 // Send to EmailJS
@@ -3365,17 +3382,10 @@
                 // Reset form
                 this.reset();
                 hideLoading();
+                this.querySelector('button[type="submit"]').disabled = false;
+
                 
-                // Optional: Save to localStorage as backup
-                saveFormBackup({
-                    name: name,
-                    email: email,
-                    phone: phone,
-                    country: country,
-                    message: this.querySelector('[name="message"]').value || 'N/A',
-                    timestamp: new Date().toISOString(),
-                    language: getCurrentLang()
-                });
+
                 
                 // Auto close modal after 10 seconds
                 setTimeout(() => {
@@ -3385,45 +3395,25 @@
             } catch (error) {
                 console.error('EmailJS Error:', error);
                 
-                // Fallback: Save to localStorage as backup
-                saveFormBackup({
-                    name: name,
-                    email: email,
-                    phone: phone,
-                    country: country,
-                    message: this.querySelector('[name="message"]').value || 'N/A',
-                    timestamp: new Date().toISOString(),
-                    language: getCurrentLang()
-                });
+
                 
-                // Show success message even on error (since we saved locally)
+
                 if (isArabic()) {
-                    showMessage('✅ تم حفظ طلبك! سنتواصل معك خلال 24 ساعة.', 'success');
-                } else {
-                    showMessage('✅ Your request has been saved! We will contact you within 24 hours.', 'success');
-                }
+    showMessage('❌ حدث خطأ أثناء إرسال الطلب. الرجاء المحاولة مرة أخرى أو التواصل معنا مباشرة.', 'error');
+} else {
+    showMessage('❌ There was an error sending your request. Please try again or contact us directly.', 'error');
+}
+
                 
                 hideLoading();
+                this.querySelector('button[type="submit"]').disabled = false;
+
                 
-                // Auto close modal after 10 seconds
-                setTimeout(() => {
-                    closeModal();
-                }, 10000);
+
             }
         });
         
-        // ====================
-        // 5. BACKUP SYSTEM (Optional)
-        // ====================
-        function saveFormBackup(formData) {
-            // Save to localStorage
-            const backups = JSON.parse(localStorage.getItem('trialRequests') || '[]');
-            backups.push(formData);
-            localStorage.setItem('trialRequests', JSON.stringify(backups.slice(-10))); // Keep last 10
-            
-            // Log to console for debugging
-            console.log('Form backup saved:', formData);
-        }
+
         
         // ====================
         // 6. FLOATING BUTTON FIX
@@ -3505,6 +3495,8 @@ window.addEventListener('scroll', () => {
         // 8. INITIALIZATION
         // ====================
         document.addEventListener('DOMContentLoaded', function() {
+            body.classList.add('arabic');
+
             // Set initial language
             const currentLang = isArabic() ? 'ar' : 'en';
             updateLanguage(currentLang);
@@ -3517,19 +3509,12 @@ window.addEventListener('scroll', () => {
             // Test EmailJS connection
             console.log('EmailJS initialized:', emailjs);
             
-            // Check for backups
-            const backups = JSON.parse(localStorage.getItem('trialRequests') || '[]');
-            if (backups.length > 0) {
-                console.log(`${backups.length} form backups found`);
-            }
+
             
             // Initial floating button state
             updateFloatingButton();
             
-            // Add loading animation to page
-            setTimeout(() => {
-                document.body.style.opacity = '1';
-            }, 100);
+
         });
         // ================= SECTION LAZY SHOW =================
 const sectionObserver = new IntersectionObserver(entries => {
