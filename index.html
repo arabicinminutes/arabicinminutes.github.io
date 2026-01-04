@@ -3277,12 +3277,7 @@ function updateLanguage(lang) {
             // Scroll to message
             messageBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             
-            // Auto-hide success messages after 9 seconds
-            if (type === 'success') {
-                setTimeout(() => {
-                    hideMessage();
-                }, 9000);
-            }
+
         }
         
         function hideMessage() {
@@ -3309,6 +3304,9 @@ function updateLanguage(lang) {
         document.getElementById('trialForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             hideMessage();
+            this.querySelector('button[type="submit"]').disabled = true;
+
+
             
             // Basic validation
             const name = this.querySelector('[name="name"]').value.trim();
@@ -3317,33 +3315,39 @@ function updateLanguage(lang) {
             const country = this.querySelector('[name="country"]').value.trim();
             
             if (!name || !email || !phone || !country) {
-                showMessage(isArabic() ? 
-                    '❌ الرجاء تعبئة جميع الحقول المطلوبة' : 
-                    '❌ Please fill all required fields', 'error');
-                return;
-            }
+    showMessage(isArabic() ? 
+        '❌ الرجاء تعبئة جميع الحقول المطلوبة' : 
+        '❌ Please fill all required fields', 'error');
+    this.querySelector('button[type="submit"]').disabled = false;
+    return;
+}
+
             
             // Email validation
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
-                showMessage(isArabic() ? 
-                    '❌ البريد الإلكتروني غير صحيح' : 
-                    '❌ Invalid email address', 'error');
-                return;
-            }
+    showMessage(isArabic() ? 
+        '❌ البريد الإلكتروني غير صحيح' : 
+        '❌ Invalid email address', 'error');
+    this.querySelector('button[type="submit"]').disabled = false;
+    return;
+}
+
             
             // Phone validation (basic check for numbers)
             const phoneRegex = /^[+]?[0-9\s\-\(\)]+$/;
             if (!phoneRegex.test(phone)) {
-                showMessage(isArabic() ? 
-                    '❌ رقم الهاتف غير صحيح' : 
-                    '❌ Invalid phone number', 'error');
-                return;
-            }
+    showMessage(isArabic() ? 
+        '❌ رقم الهاتف غير صحيح' : 
+        '❌ Invalid phone number', 'error');
+    this.querySelector('button[type="submit"]').disabled = false;
+    return;
+}
+
+
             
             // Show loading
             showLoading();
-            this.querySelector('button[type="submit"]').disabled = true;
 
             
             try {
@@ -3387,10 +3391,7 @@ function updateLanguage(lang) {
                 
 
                 
-                // Auto close modal after 10 seconds
-                setTimeout(() => {
-                    closeModal();
-                }, 10000);
+
                 
             } catch (error) {
                 console.error('EmailJS Error:', error);
@@ -3506,8 +3507,6 @@ window.addEventListener('scroll', () => {
                 btn.classList.toggle('active', btn.dataset.lang === currentLang);
             });
             
-            // Test EmailJS connection
-            console.log('EmailJS initialized:', emailjs);
             
 
             
