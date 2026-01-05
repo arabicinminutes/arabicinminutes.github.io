@@ -2711,44 +2711,6 @@ body.modal-open {
 }
 
 
-.floating-trial-btn {
-    position: fixed;
-    bottom: 40px;
-    left: 40px;
-
-    width: 90px;
-    height: 90px;
-
-    /* الإخفاء */
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(100px) scale(0.7);
-
-    /* منع الضغط */
-    pointer-events: none;
-
-    transition:
-        opacity 0.4s ease,
-        transform 0.4s ease,
-        visibility 0s linear 0.4s;
-}
-
-
-
-.floating-trial-btn.visible {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0) scale(1);
-
-    /* السماح بالضغط */
-    pointer-events: auto;
-
-    transition:
-        opacity 0.4s ease,
-        transform 0.4s ease,
-        visibility 0s;
-}
-
     </style>
 </head>
 <body class="arabic" dir="rtl">
@@ -3917,7 +3879,7 @@ function updateFloatingButton() {
 
     const scrollPosition = window.scrollY;
 
-    if (scrollPosition > 300) {
+    if (scrollPosition > 500) {
         trialBtn.classList.add('visible');
         whatsappBtn.classList.add('visible');
     } else {
