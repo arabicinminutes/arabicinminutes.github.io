@@ -3784,56 +3784,6 @@ document.querySelectorAll('[data-whatsapp]').forEach(btn => {
     });
 });
 
-        // ====================
-        // 8. INITIALIZATION
-        // ====================
-document.addEventListener('DOMContentLoaded', function() {
-    const savedLang = localStorage.getItem('lang') || 'ar';
-
-    body.classList.remove('arabic', 'english');
-    body.classList.add(savedLang === 'ar' ? 'arabic' : 'english');
-
-    updateLanguage(savedLang);
-
-    langButtons.forEach(btn => {
-    btn.classList.remove('active');
-    if (btn.dataset.lang === savedLang) {
-        btn.classList.add('active');
-    }
-    // ====================
-// PRIVACY POLICY MODAL (FIXED)
-// ====================
-const privacyBtn = document.getElementById('privacyBtn');
-const privacyModal = document.getElementById('privacyModal');
-const closePrivacy = document.getElementById('closePrivacy');
-
-if (privacyBtn && privacyModal) {
-    privacyBtn.addEventListener('click', function () {
-        privacyModal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    });
-}
-
-if (closePrivacy && privacyModal) {
-    closePrivacy.addEventListener('click', function () {
-        privacyModal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    });
-}
-
-if (privacyModal) {
-    privacyModal.addEventListener('click', function (e) {
-        if (e.target === this) {
-            privacyModal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-    });
-}
-
-});
-
-
-    updateFloatingButton();
 
 
 
