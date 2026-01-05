@@ -2521,6 +2521,33 @@
     white-space: pre-line;
 }
 
+
+/* ===== DISABLE HOVER EFFECTS ON TOUCH DEVICES ===== */
+@media (hover: none) {
+  *:hover {
+    transform: none !important;
+    box-shadow: none !important;
+    filter: none !important;
+  }
+}
+
+
+/* ===== REDUCE HEAVY ANIMATIONS ON MOBILE ===== */
+@media (max-width: 768px) {
+
+  /* إيقاف الأنيميشن المستمرة */
+  .pulse,
+  .freeGlow,
+  .suitability-note::before {
+    animation: none !important;
+  }
+
+  /* تقليل الحركات العامة */
+  * {
+    transition-duration: 0.15s !important;
+  }
+}
+
     </style>
 </head>
 <body class="arabic" dir="rtl">
