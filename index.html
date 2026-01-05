@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+    <meta property="og:type" content="website">
+<meta name="robots" content="index, follow">
+
+<meta property="og:title" content="Nooran Academy">
+<meta property="og:description" content="تعليم العربية والقرآن بأسلوب يناسب كل عمر ومرحلة">
+
+<meta property="og:image" content="https://dummyimage.com/600x400/0a5c36/ffffff&text=Nooran+Academy">
+
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nooran Academy | أسلوب تعليم يناسب كل عمر ومرحلة</title>
@@ -2251,23 +2261,6 @@
             outline-offset: 3px;
         }
 
-        /* 25. تأثيرات إضافية */
-        .glow {
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            from {
-                box-shadow: 0 0 10px rgba(87, 204, 153, 0.4),
-                            0 0 20px rgba(87, 204, 153, 0.3),
-                            0 0 30px rgba(87, 204, 153, 0.2);
-            }
-            to {
-                box-shadow: 0 0 15px rgba(87, 204, 153, 0.6),
-                            0 0 25px rgba(87, 204, 153, 0.4),
-                            0 0 35px rgba(87, 204, 153, 0.3);
-            }
-        }
 
         .pulse {
             animation: pulse 2s ease-in-out infinite;
@@ -2279,33 +2272,15 @@
             100% { transform: scale(1); }
         }
 
-        /* 26. فئات مساعدة */
-        .text-gradient {
-            background: linear-gradient(135deg, var(--accent-color), var(--primary-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
 
-        .bg-gradient {
-            background: linear-gradient(135deg, var(--dark-card), var(--dark-bg));
-        }
 
-        .shadow-lg {
-            box-shadow: var(--box-shadow-lg);
-        }
 
-        .shadow-hover {
-            transition: var(--transition);
-        }
 
-        .shadow-hover:hover {
-            box-shadow: var(--box-shadow-hover);
-        }
 
-        .transition-all {
-            transition: var(--transition);
-        }
+
+
+
+
 
         /* 27. تأثيرات تحميل */
         .loading-spinner {
@@ -2372,37 +2347,8 @@
         }
 
 
-  /* إيقاف الـ blur (سبب التقطيع الأساسي) */
-  * {
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-  }
 
-  /* إزالة الظلال الثقيلة */
-  .hero-feature,
-  .trust-item,
-  .service-card,
-  .pricing-card,
-  .testimonial-card,
-  .teacher-card,
-  .suitability-card,
-  .faq-item,
-  .final-cta,
-  .floating-trial-btn {
-    box-shadow: none !important;
-  }
-}
-/* Section smooth loading */
-.section-hidden {
-  opacity: 0;
-  transform: translateY(30px);
-}
 
-.section.visible {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
 
 
 /* ================= FLOATING BUTTONS STACK FIX ================= */
@@ -2530,6 +2476,46 @@
 }
 
 
+
+/* ===== SUCCESS BOX (CENTERED & CLEAN) ===== */
+.success-box {
+    display: none;
+    text-align: center;
+    padding: 20px;
+    margin: 40px auto;
+    max-width: 360px;
+    border-radius: 12px;
+    background: rgba(46, 204, 113, 0.15);
+    border: 1px solid rgba(46, 204, 113, 0.4);
+    color: #57cc99;
+    font-size: 1rem;
+}
+
+.success-icon {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+/* ===== ERROR BOX (RED & CLEAN) ===== */
+.error-box {
+    display: none;
+    text-align: center;
+    padding: 18px;
+    margin: 20px 0;
+    border-radius: 12px;
+    background: rgba(255, 107, 107, 0.2);
+    border: 1px solid rgba(255, 107, 107, 0.6);
+    color: #ff6b6b;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.error-box .error-icon {
+    font-size: 1.4rem;
+    margin-left: 6px;
+}
+
+
     </style>
 </head>
 <body class="arabic" dir="rtl">
@@ -2549,7 +2535,7 @@
             حصة<br>مجانية
         </span>
     </div>
-<div class="floating-trial-btn" id="whatsappFloatBtn">
+<div class="floating-trial-btn" id="whatsappFloatBtn" data-whatsapp>
 
 
     <i class="fab fa-whatsapp"></i>
@@ -2606,7 +2592,7 @@
                         <i class="fas fa-tag"></i> شاهد خطط الأسعار
                     </a>
                     
-                    <button class="btn-secondary" id="trialHeroBtn" 
+                    <button type="button" class="btn-secondary" id="trialHeroBtn" 
                             data-ar="🎓 ابدأ رحلتك بنفسك"
                             data-en="🎓 Start Your Own Learning Journey">
                         <i class="fas fa-user-graduate"></i> 🎓 ابدأ رحلتك بنفسك
@@ -2824,7 +2810,8 @@
                     
                     <div class="service-card">
                         <div class="service-icon">
-                            <i class="fas fa-quran"></i>
+                            <i class="fas fa-book-open"></i>
+
                         </div>
                         <h3 class="service-title" data-ar="تعلم القرآن" data-en="Quran Learning">
                             تعلم القرآن
@@ -3172,7 +3159,7 @@
                             <span data-ar="🎁 احجز حصتك المجانية" data-en="🎁 Book Your Free Lesson">🎁 احجز حصتك المجانية</span>
                         </button>
                         
-                        <button class="btn-secondary" id="talkFirstBtn" style="font-size: 1.4rem; padding: 25px 45px;">
+                        <button class="btn-secondary" id="talkFirstBtn" data-whatsapp style="font-size: 1.4rem; padding: 25px 45px;">
                             <i class="fas fa-comments"></i> 
                             <span data-ar="💬 تحدث معنا أولًا" data-en="💬 Talk to Us First">💬 تحدث معنا أولًا</span>
                         </button>
@@ -3222,7 +3209,7 @@
                             <span data-ar="الأسعار الشفافة" data-en="Transparent Pricing">الأسعار الشفافة</span>
                         </a>
                         
-                        <a href="#" id="footerWhatsappBtn">
+                        <a href="javascript:void(0)" id="footerWhatsappBtn" data-whatsapp>
     <i class="fab fa-whatsapp"></i> 
     <span data-ar="👋 تحدث معنا" data-en="👋 Talk to Us">👋 تحدث معنا</span>
 </a>
@@ -3265,10 +3252,20 @@
                         ⏱️ 30 دقيقة قد تغيّر نظرتك للتعلّم. 🌟 اكتشف إن كان هذا المسار مناسبًا لك أو لعائلتك.
                     </span>
                 </p>
+                <!-- ERROR BOX -->
+<div class="error-box small" id="errorBox">
+    <span class="error-icon">❌</span>
+    <span
+        data-ar="تعذّر إرسال الطلب الآن. حاول مرة أخرى."
+        data-en="Failed to send your request. Please try again.">
+        تعذّر إرسال الطلب الآن. حاول مرة أخرى.
+    </span>
+</div>
+
             </div>
             
             <!-- Message Box -->
-            <div class="message-box" id="formMessage"></div>
+            
             
             <div class="modal-form-container">
                 <form id="trialForm" class="compact-form">
@@ -3323,13 +3320,32 @@
                             🤝 سنتصل بك خلال 24 ساعة عبر واتساب للتحدث وترتيب الموعد.
                         </span>
                     </div>
+
+
                 </form>
+
+
+
             </div>
-            
+            <!-- SUCCESS BOX -->
+<div class="success-box" id="successBox">
+    <div class="success-icon">✅</div>
+    <p
+        data-ar="تم إرسال طلبك بنجاح.<br>سنتواصل معك خلال 24 ساعة عبر واتساب."
+        data-en="Your request has been sent successfully.<br>We will contact you within 24 hours via WhatsApp.">
+        تم إرسال طلبك بنجاح.<br>
+        سنتواصل معك خلال 24 ساعة عبر واتساب.
+    </p>
+</div>
+
             <!-- Loading Spinner -->
             <div class="loading-spinner" id="loadingSpinner">
                 <div class="spinner"></div>
-                <p id="loadingText" data-ar="جاري إرسال طلبك…" data-en="Sending your request…">جاري إرسال طلبك…</p>
+                <p id="loadingText"
+   data-ar="جاري إرسال طلبك…"
+   data-en="Sending your request…">
+   جاري إرسال طلبك…
+</p>
             </div>
         </div>
     </div>
@@ -3337,7 +3353,8 @@
     <!-- EmailJS SDK -->
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     
-    <script>
+    <script defer>
+
         // ====================
         // 1. EMAILJS CONFIGURATION
         // ====================
@@ -3418,23 +3435,31 @@ function updateLanguage(lang) {
         // ====================
         // 3. MODAL FUNCTIONS
         // ====================
-        function openModal() {
-            document.getElementById('trialModal').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-            // Reset form and hide message
-            
-            hideMessage();
-            hideLoading();
-            
+  function openModal() {
+    document.getElementById('trialModal').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
 
-        }
+
+    document.getElementById('trialForm').style.display = 'block';
+    document.getElementById('successBox').style.display = 'none';
+    document.getElementById('errorBox').style.display = 'none';
+        document.querySelector('#trialForm button[type="submit"]').disabled = false;
+
+}
+
+
         
-        function closeModal() {
-            document.getElementById('trialModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-            hideLoading();
-            hideMessage();
-        }
+   function closeModal() {
+    document.getElementById('trialModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+
+    const formContainer = document.querySelector('.modal-form-container');
+    if (formContainer) formContainer.style.display = 'block';
+
+    document.getElementById('successBox').style.display = 'none';
+    document.getElementById('errorBox').style.display = 'none';
+}
+
         
         function showLoading() {
             document.getElementById('loadingSpinner').style.display = 'block';
@@ -3448,29 +3473,18 @@ function updateLanguage(lang) {
             document.getElementById('trialForm').style.pointerEvents = 'auto';
         }
         
-        function showMessage(message, type) {
-            const messageBox = document.getElementById('formMessage');
-            messageBox.textContent = message;
-            messageBox.className = `message-box ${type}`;
-            messageBox.style.display = 'block';
-            
-            // Scroll to message
-            messageBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            
-
-        }
         
-        function hideMessage() {
-            const messageBox = document.getElementById('formMessage');
-            messageBox.style.display = 'none';
-            messageBox.textContent = '';
-        }
+        
+        
         
 
         
         // ESC to close modal
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeModal();
+            if (e.key === 'Escape' && document.getElementById('trialModal').style.display === 'flex') {
+    closeModal();
+}
+
         });
         
         // Close modal when clicking outside
@@ -3479,13 +3493,24 @@ function updateLanguage(lang) {
 });
 
         
+function showValidationError(messageAr, messageEn) {
+    const errorBox = document.getElementById('errorBox');
+    const textSpan = errorBox.querySelector('span:last-child');
+
+    textSpan.textContent = isArabic() ? messageAr : messageEn;
+    errorBox.style.display = 'block';
+}
+
         // ====================
         // 4. FORM VALIDATION & SUBMISSION
         // ====================
         document.getElementById('trialForm').addEventListener('submit', async function(e) {
             e.preventDefault();
+            document.getElementById('errorBox').style.display = 'none';
+document.getElementById('successBox').style.display = 'none';
+
             if (this.querySelector('[name="website"]').value !== '') return;
-            hideMessage();
+            
             this.querySelector('button[type="submit"]').disabled = true;
 
 
@@ -3495,11 +3520,13 @@ function updateLanguage(lang) {
             const email = this.querySelector('[name="email"]').value.trim();
             const phone = this.querySelector('[name="phone"]').value.trim();
             const country = this.querySelector('[name="country"]').value.trim();
-            
-            if (!name || !email || !phone || !country) {
-    showMessage(isArabic() ? 
-        '❌ الرجاء تعبئة جميع الحقول المطلوبة' : 
-        '❌ Please fill all required fields', 'error');
+  
+
+if (!name || !email || !phone || !country) {
+    showValidationError(
+        'يرجى ملء جميع الحقول المطلوبة',
+        'Please fill in all required fields'
+    );
     this.querySelector('button[type="submit"]').disabled = false;
     return;
 }
@@ -3507,24 +3534,29 @@ function updateLanguage(lang) {
             
             // Email validation
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-    showMessage(isArabic() ? 
-        '❌ البريد الإلكتروني غير صحيح' : 
-        '❌ Invalid email address', 'error');
+if (!emailRegex.test(email)) {
+    showValidationError(
+        'يرجى إدخال بريد إلكتروني صحيح',
+        'Please enter a valid email address'
+    );
     this.querySelector('button[type="submit"]').disabled = false;
     return;
 }
 
+
+
             
             // Phone validation (basic check for numbers)
             const phoneRegex = /^[+]?[0-9\s\-\(\)]+$/;
-            if (!phoneRegex.test(phone)) {
-    showMessage(isArabic() ? 
-        '❌ رقم الهاتف غير صحيح' : 
-        '❌ Invalid phone number', 'error');
+ if (!phoneRegex.test(phone)) {
+    showValidationError(
+        'يرجى إدخال رقم واتساب صحيح',
+        'Please enter a valid WhatsApp number'
+    );
     this.querySelector('button[type="submit"]').disabled = false;
     return;
 }
+
 
 
             
@@ -3556,98 +3588,64 @@ function updateLanguage(lang) {
                 );
                 
                 // Success
-                console.log('EmailJS Success:', result);
-                
-                // Show success message
-                if (isArabic()) {
-                    showMessage('✅ شكرًا! سنتواصل معك خلال 24 ساعة عبر واتساب.', 'success');
-                } else {
-                    showMessage('✅ Thank you! We will contact you within 24 hours via WhatsApp.', 'success');
-                }
-                
-                // Reset form
-                this.reset();
-                hideLoading();
-                this.querySelector('button[type="submit"]').disabled = false;
+console.log('EmailJS Success:', result);
+
+// إخفاء اللودينج
+hideLoading();
+
+// إخفاء الفورم
+document.querySelector('.modal-form-container').style.display = 'none';
+
+// إظهار رسالة النجاح
+document.getElementById('successBox').style.display = 'block';
+
 
                 
 
                 
 
                 
-            } catch (error) {
-                console.error('EmailJS Error:', error);
-                
+} catch (error) {
 
-                
+hideLoading();
+    this.querySelector('button[type="submit"]').disabled = false;
 
-                if (isArabic()) {
-    showMessage('❌ حدث خطأ أثناء إرسال الطلب. الرجاء المحاولة مرة أخرى أو التواصل معنا مباشرة.', 'error');
-} else {
-    showMessage('❌ There was an error sending your request. Please try again or contact us directly.', 'error');
+    showValidationError(
+        'تعذّر إرسال الطلب الآن. حاول مرة أخرى.',
+        'Failed to send your request. Please try again.'
+    );
 }
 
-                
-                hideLoading();
-                this.querySelector('button[type="submit"]').disabled = false;
+});
 
                 
 
-            }
-        });
+
         
 
         
         // ====================
         // 6. FLOATING BUTTON FIX
         // ====================
-        function updateFloatingButton() {
-            const trialBtn = document.getElementById('trialBtn');
-            const whatsappBtn = document.getElementById('whatsappFloatBtn');
+function updateFloatingButton() {
+    const trialBtn = document.getElementById('trialBtn');
+    const whatsappBtn = document.getElementById('whatsappFloatBtn');
 
-            if (!trialBtn) return;
+    if (!trialBtn || !whatsappBtn) return;
 
-            const scrollPosition = window.scrollY;
+    const scrollPosition = window.scrollY;
 
-            // يظهر الزر عندما يتم التمرير 300px أو أكثر
-if (scrollPosition > 300) {
-    trialBtn.classList.add('visible');
-    whatsappBtn.classList.add('visible');
-} else {
-    trialBtn.classList.remove('visible');
-    whatsappBtn.classList.remove('visible');
+    if (scrollPosition > 300) {
+        trialBtn.classList.add('visible');
+        whatsappBtn.classList.add('visible');
+    } else {
+        trialBtn.classList.remove('visible');
+        whatsappBtn.classList.remove('visible');
+    }
 }
 
-        }
         
-        // ====================
-        // 7. EVENT LISTENERS
-        // ====================
-// WHATSAPP BUTTON (AR / EN)
-// ====================
-document.getElementById('whatsappTalkBtn').addEventListener('click', function (e) {
-    e.preventDefault();
 
-    const phone = '201061815595'; // ← حط رقمك هنا بدون +
-    
-    const message = isArabic()
-        ? 'السلام عليكم، حابب استفسر عن دروس أكاديمية نوران'
-        : 'As-salamu alaykum, I would like to ask about Nooran Academy lessons';
-
-    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-    window.open(url, '_blank');
-});
-// FLOATING WHATSAPP BUTTON (AR / EN)
-document.getElementById('whatsappFloatBtn').addEventListener('click', function () {
-    const phone = '201061815595';
-    
-    const message = isArabic()
-        ? 'السلام عليكم، حابب استفسر عن دروس أكاديمية نوران'
-        : 'As-salamu alaykum, I would like to ask about Nooran Academy lessons';
-
-    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-    window.open(url, '_blank');
-});
 
 
         // ====================
@@ -3659,17 +3657,6 @@ document.getElementById('whatsappFloatBtn').addEventListener('click', function (
         
         
 
-        // TALK TO US FIRST BUTTON (FINAL CTA)
-document.getElementById('talkFirstBtn').addEventListener('click', function () {
-    const phone = '201061815595';
-
-    const message = isArabic()
-        ? 'السلام عليكم، حابب أتكلم معكم الأول قبل التسجيل'
-        : 'As-salamu alaykum, I would like to talk to you first before registering';
-
-    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-    window.open(url, '_blank');
-});
 
         
         // زر ابدأ التعلم الآن
@@ -3740,7 +3727,26 @@ window.addEventListener('scroll', () => {
 
         
 
-        
+// ====================
+// WHATSAPP BUTTON HANDLER (FIX)
+// ====================
+function openWhatsApp(customMessageAr, customMessageEn) {
+    const phone = '201061815595';
+    const message = isArabic() ? customMessageAr : customMessageEn;
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+}
+
+document.querySelectorAll('[data-whatsapp]').forEach(btn => {
+    btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        openWhatsApp(
+            'السلام عليكم، حابب أستفسر عن أكاديمية نوران',
+            'As-salamu alaykum, I would like to ask about Nooran Academy'
+        );
+    });
+});
+
         // ====================
         // 8. INITIALIZATION
         // ====================
@@ -3753,41 +3759,18 @@ document.addEventListener('DOMContentLoaded', function() {
     updateLanguage(savedLang);
 
     langButtons.forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.lang === savedLang);
-    });
+    btn.classList.remove('active');
+    if (btn.dataset.lang === savedLang) {
+        btn.classList.add('active');
+    }
+});
+
 
     updateFloatingButton();
 });
 
-        // ================= SECTION LAZY SHOW =================
-const sectionObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            sectionObserver.unobserve(entry.target);
-        }
-    });
-}, {
-    threshold: 0.15
-});
 
-document.querySelectorAll('.section').forEach(section => {
-    section.classList.add('section-hidden');
-    sectionObserver.observe(section);
-});
-// FOOTER WHATSAPP BUTTON
-document.getElementById('footerWhatsappBtn').addEventListener('click', function (e) {
-    e.preventDefault();
 
-    const phone = '201061815595';
-
-    const message = isArabic()
-        ? 'السلام عليكم، حابب أتكلم معكم بخصوص أكاديمية نوران'
-        : 'As-salamu alaykum, I would like to talk to you about Nooran Academy';
-
-    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-    window.open(url, '_blank');
-});
 
 
     </script>
