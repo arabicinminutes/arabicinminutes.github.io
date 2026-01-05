@@ -2508,6 +2508,7 @@
     color: #ff6b6b;
     font-size: 0.95rem;
     line-height: 1.6;
+
 }
 
 .error-box .error-icon {
@@ -2515,6 +2516,10 @@
     margin-left: 6px;
 }
 
+
+.error-box span {
+    white-space: pre-line;
+}
 
     </style>
 </head>
@@ -3213,6 +3218,15 @@
     <i class="fab fa-whatsapp"></i> 
     <span data-ar="👋 تحدث معنا" data-en="👋 Talk to Us">👋 تحدث معنا</span>
 </a>
+<a href="javascript:void(0)" id="privacyBtn">
+    <i class="fas fa-user-shield"></i>
+    <span 
+        data-ar="سياسة الخصوصية وشروط الاستخدام" 
+        data-en="Privacy Policy & Terms of Service">
+        سياسة الخصوصية وشروط الاستخدام
+    </span>
+</a>
+
 
                     </div>
                 </div>
@@ -3313,13 +3327,30 @@
                         <i class="fas fa-paper-plane"></i> 
                         <span data-ar="🎯 أرسل طلبي الآن" data-en="🎯 Send My Request Now">🎯 أرسل طلبي الآن</span>
                     </button>
-                    
-                    <div class="form-note">
-                        <span data-ar="🤝 سنتصل بك خلال 24 ساعة عبر واتساب للتحدث وترتيب الموعد.<br> هذه محادثة ودية، وليست جلسة بيع." 
-                              data-en="🤝 We'll contact you within 24 hours via WhatsApp to chat and schedule the appointment. <br>This is a friendly conversation, not a sales session.">
-                            🤝 سنتصل بك خلال 24 ساعة عبر واتساب للتحدث وترتيب الموعد.
-                        </span>
-                    </div>
+   <div class="form-note" style="margin-top:12px; line-height:1.6">
+    <span
+        data-ar='🤝 سنتصل بك خلال 24 ساعة عبر واتساب للتحدث وترتيب الموعد.<br>
+        هذه محادثة ودية، وليست جلسة بيع.<br>
+        بالضغط على زر الإرسال، أنت توافق على 
+        <a href="javascript:void(0)"
+           onclick="document.getElementById(&#39;privacyModal&#39;).style.display=&#39;flex&#39;; document.body.style.overflow=&#39;hidden&#39;;"
+           style="color:#57cc99;font-weight:700;text-decoration:underline">
+            سياسة الخصوصية وشروط الاستخدام
+        </a>.'
+        
+        data-en='🤝 We will contact you within 24 hours via WhatsApp to chat and schedule the appointment.<br>
+        This is a friendly conversation, not a sales session.<br>
+        By submitting this form, you agree to the 
+        <a href="javascript:void(0)"
+           onclick="document.getElementById(&#39;privacyModal&#39;).style.display=&#39;flex&#39;; document.body.style.overflow=&#39;hidden&#39;;"
+           style="color:#57cc99;font-weight:700;text-decoration:underline">
+            Privacy Policy & Terms of Service
+        </a>.'
+    >
+        🤝 سنتصل بك خلال 24 ساعة عبر واتساب للتحدث وترتيب الموعد.
+    </span>
+</div>
+
 
 
                 </form>
@@ -3358,7 +3389,10 @@
         // ====================
         // 1. EMAILJS CONFIGURATION
         // ====================
-        emailjs.init("RbSNJoA0FrcnryFIC");
+        if (typeof emailjs !== 'undefined') {
+    emailjs.init("RbSNJoA0FrcnryFIC");
+}
+
         
         const EMAILJS_SERVICE = "service_f1zt39e";
         const EMAILJS_TEMPLATES = {
@@ -3593,6 +3627,9 @@ console.log('EmailJS Success:', result);
 // إخفاء اللودينج
 hideLoading();
 
+// مسح كل الحقول
+this.reset();
+
 // إخفاء الفورم
 document.querySelector('.modal-form-container').style.display = 'none';
 
@@ -3611,8 +3648,8 @@ hideLoading();
     this.querySelector('button[type="submit"]').disabled = false;
 
     showValidationError(
-        'تعذّر إرسال الطلب الآن. حاول مرة أخرى.',
-        'Failed to send your request. Please try again.'
+    'تعذّر إرسال الطلب الآن.\nيُرجى التأكد من اتصال الإنترنت ثم المحاولة مرة أخرى.',
+    'Failed to send your request.\nPlease check your internet connection and try again.'
     );
 }
 
@@ -3763,6 +3800,36 @@ document.addEventListener('DOMContentLoaded', function() {
     if (btn.dataset.lang === savedLang) {
         btn.classList.add('active');
     }
+    // ====================
+// PRIVACY POLICY MODAL (FIXED)
+// ====================
+const privacyBtn = document.getElementById('privacyBtn');
+const privacyModal = document.getElementById('privacyModal');
+const closePrivacy = document.getElementById('closePrivacy');
+
+if (privacyBtn && privacyModal) {
+    privacyBtn.addEventListener('click', function () {
+        privacyModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    });
+}
+
+if (closePrivacy && privacyModal) {
+    closePrivacy.addEventListener('click', function () {
+        privacyModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+}
+
+if (privacyModal) {
+    privacyModal.addEventListener('click', function (e) {
+        if (e.target === this) {
+            privacyModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+}
+
 });
 
 
@@ -3773,6 +3840,141 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+
+
     </script>
+<!-- Privacy Policy Modal -->
+<div class="modal-overlay" id="privacyModal">
+    <div class="modal-content" style="max-width:600px">
+
+        <button class="modal-close" id="closePrivacy">&times;</button>
+
+        <div class="modal-header">
+            <h2 data-ar="🔒 سياسة الخصوصية وشروط الاستخدام"
+                data-en="🔒 Privacy Policy & Terms of Service">
+                🔒 سياسة الخصوصية وشروط الاستخدام
+            </h2>
+        </div>
+
+        <div class="modal-form-container" style="overflow-y:auto">
+
+
+
+
+
+
+
+<p data-ar="
+<strong>🔒 سياسة الخصوصية</strong><br><br>
+
+نحن في أكاديمية نوران نولي خصوصية مستخدمينا وزوار موقعنا أهمية كبيرة، ونلتزم بحماية جميع البيانات الشخصية التي يتم جمعها أو تقديمها عبر الموقع.<br><br>
+
+<strong>تصفح الموقع</strong><br>
+يمكنك تصفح موقع أكاديمية نوران دون الكشف عن أي بيانات شخصية. ولا يتم جمع أي معلومات شخصية تلقائيًا أثناء التصفح، ويتم تقديم البيانات فقط بإرادتك الكاملة عند تعبئة النماذج.<br><br>
+
+<strong>البيانات التي نقوم بجمعها</strong><br>
+قد نقوم بجمع بعض البيانات مثل الاسم، البريد الإلكتروني، رقم الواتساب، الدولة، أو أي معلومات أخرى تقدمها طوعًا بهدف التواصل معك بخصوص الحصة التجريبية أو الخدمات التعليمية التي تقدمها الأكاديمية.<br><br>
+
+<strong>استخدام البيانات</strong><br>
+تُستخدم البيانات التي يتم جمعها فقط لأغراض التواصل، وتنظيم الدروس، وتحسين جودة الخدمات التعليمية. ولا يتم بيع أو تأجير أو مشاركة هذه البيانات مع أي طرف ثالث، إلا إذا طُلب ذلك بموجب أمر قانوني صادر من جهة مختصة.<br><br>
+
+يمكنك في أي وقت طلب تعديل أو حذف بياناتك من سجلاتنا.<br><br>
+
+<strong>تسجيل الأطفال</strong><br>
+يتم تسجيل الأطفال في الأكاديمية بموافقة صريحة من ولي الأمر، ويتحمل ولي الأمر مسؤولية صحة البيانات المقدمة.<br><br>
+
+<strong>معلومات الاستخدام والتحليلات</strong><br>
+قد نقوم بجمع معلومات تقنية عامة مثل نوع المتصفح، نظام التشغيل، أو عدد الزيارات، وذلك لأغراض إحصائية وتحسين تجربة المستخدم، دون ربط هذه البيانات بهوية شخصية.<br><br>
+
+<strong>الكوكيز (Cookies)</strong><br>
+قد يستخدم الموقع ملفات تعريف الارتباط لتحسين تجربة التصفح، ولا تُستخدم هذه الملفات لأي أغراض إعلانية أو تجارية.<br><br>
+
+<hr><br>
+
+<strong>📄 شروط الاستخدام</strong><br><br>
+
+باستخدامك لموقع أكاديمية نوران أو تسجيلك لبياناتك، فإنك توافق على ما يلي:<br><br>
+
+• الموقع تعليمي وتعريفي، ولا يُعد عقدًا ملزمًا إلا بعد الاتفاق المباشر مع الأكاديمية.<br><br>
+
+• الحصة التجريبية مخصصة للتعارف والتقييم فقط، ولا تمثل التزامًا بالدراسة أو الدفع.<br><br>
+
+• يُمنع إساءة استخدام الموقع أو أي من محتوياته أو محاولة الإضرار به تقنيًا.<br><br>
+
+• جميع المواد والمحتويات التعليمية محمية بحقوق الملكية الفكرية، ولا يجوز نسخها أو إعادة استخدامها دون إذن مسبق.<br><br>
+
+• تحتفظ الأكاديمية بحق تعديل المحتوى أو السياسات أو الخدمات في أي وقت دون إشعار مسبق.<br><br>
+
+<strong>حدود المسؤولية</strong><br>
+يتم تقديم الموقع والخدمات كما هي، ولا تتحمل الأكاديمية أي مسؤولية عن أي أعطال تقنية، أو انقطاع في الخدمة، أو أضرار ناتجة عن استخدام الموقع أو الاعتماد على محتواه.<br><br>
+
+<strong>التواصل معنا</strong><br>
+في حال وجود أي استفسارات بخصوص سياسة الخصوصية أو شروط الاستخدام، يمكنكم التواصل معنا عبر وسائل الاتصال المتاحة على الموقع.
+"
+data-en="
+<strong>🔒 Privacy Policy</strong><br><br>
+
+At Nooran Academy, we take your privacy seriously and are committed to protecting all personal data collected or provided through our website.<br><br>
+
+<strong>Website Browsing</strong><br>
+You may browse our website without providing any personal information. Personal data is collected only when voluntarily submitted through forms.<br><br>
+
+<strong>Information We Collect</strong><br>
+We may collect personal information such as name, email address, WhatsApp number, country, or any other data you voluntarily provide in order to contact you regarding the free trial or our educational services.<br><br>
+
+<strong>Use of Information</strong><br>
+Collected data is used solely for communication, lesson organization, and service improvement. We do not sell, rent, or share your data with third parties, except when required by law.<br><br>
+
+You may request modification or deletion of your data at any time.<br><br>
+
+<strong>Children Registration</strong><br>
+Children may be registered only with the explicit consent of a parent or legal guardian, who is responsible for the accuracy of the provided information.<br><br>
+
+<strong>Usage & Analytics</strong><br>
+We may collect non-personal technical information (such as browser type or visit statistics) for analytical purposes to improve user experience, without linking it to personal identities.<br><br>
+
+<strong>Cookies</strong><br>
+Cookies may be used to enhance browsing experience and are not used for advertising or commercial purposes.<br><br>
+
+<hr><br>
+
+<strong>📄 Terms of Service</strong><br><br>
+
+By using Nooran Academy’s website or submitting your information, you agree to the following terms:<br><br>
+
+• The website is for educational and informational purposes only and does not constitute a binding contract unless explicitly agreed upon.<br><br>
+
+• The free trial lesson is for introduction and assessment only and does not represent a payment or learning commitment.<br><br>
+
+• Misuse of the website or its content, including technical abuse, is strictly prohibited.<br><br>
+
+• All educational materials and content are protected by intellectual property rights and may not be reused without permission.<br><br>
+
+• The academy reserves the right to update content, services, or policies at any time without prior notice.<br><br>
+
+<strong>Limitation of Liability</strong><br>
+The website and services are provided “as is,” and Nooran Academy shall not be liable for any technical issues, service interruptions, or damages resulting from the use of the website.<br><br>
+
+<strong>Contact Us</strong><br>
+If you have any questions regarding this Privacy Policy or Terms of Service, please contact us through the available channels on the website.
+">
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
