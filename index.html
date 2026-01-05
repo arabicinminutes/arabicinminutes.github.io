@@ -1423,18 +1423,18 @@
         }
 
         .suitability-note::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, 
-                transparent 30%, 
-                rgba(87, 204, 153, 0.05) 50%, 
-                transparent 70%);
-            animation: shimmer 3s infinite linear;
-        }
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        45deg,
+        transparent 25%,
+        rgba(87, 204, 153, 0.18) 50%,
+        transparent 75%
+    );
+    animation: shimmer 4s infinite linear;
+}
+
 
         @keyframes shimmer {
             0% { transform: translateX(-100%); }
@@ -1450,11 +1450,16 @@
             z-index: 1;
         }
 
-        .suitability-note .highlight {
-            color: var(--accent-color);
-            font-weight: 900;
-            text-shadow: var(--text-shadow);
-        }
+.suitability-note .highlight {
+    color: var(--accent-color);
+    font-weight: 900;
+    text-shadow:
+    0 0 4px rgba(87, 204, 153, 0.5),
+0 0 10px rgba(87, 204, 153, 0.3);
+
+
+}
+
 
         /* 16. تحسينات قسم الأسئلة الشائعة */
         .faq-grid {
@@ -2432,6 +2437,66 @@
     left: 20px;
   }
 }
+.faq-answer span {
+    display: block;
+}
+/* === FAQ FIX ON MOBILE (IMPORTANT) === */
+@media (max-width: 768px) {
+  .faq-answer {
+    transition: max-height 0.4s ease, padding 0.4s ease !important;
+    overflow: hidden;
+  }
+}
+
+
+/* ===== FREE PRICE GLOW EFFECT ===== */
+.pricing-card.free .pricing-price {
+    font-size: 4.2rem;
+    font-weight: 900;
+    margin: 30px 0;
+
+    /* تدرج منوّر */
+    background: linear-gradient(
+        135deg,
+        #57cc99,
+        #80e5b6,
+        #2d8b8b
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    /* Glow */
+    text-shadow:
+        0 0 6px rgba(87, 204, 153, 0.6),
+        0 0 14px rgba(87, 204, 153, 0.45),
+        0 0 28px rgba(87, 204, 153, 0.35);
+
+    /* حركة خفيفة */
+    animation: freeGlow 2.5s ease-in-out infinite;
+}
+
+/* Animation */
+@keyframes freeGlow {
+    0% {
+        text-shadow:
+            0 0 6px rgba(87, 204, 153, 0.5),
+            0 0 14px rgba(87, 204, 153, 0.35);
+    }
+    50% {
+        text-shadow:
+            0 0 10px rgba(87, 204, 153, 0.8),
+            0 0 22px rgba(87, 204, 153, 0.6),
+            0 0 40px rgba(87, 204, 153, 0.45);
+    }
+    100% {
+        text-shadow:
+            0 0 6px rgba(87, 204, 153, 0.5),
+            0 0 14px rgba(87, 204, 153, 0.35);
+    }
+}
+
+
 
     </style>
 </head>
@@ -2956,8 +3021,8 @@
                 </div>
                 
                 <div class="suitability-note">
-                    <p data-ar="<span class='highlight'>نحن نرافق عددًا محدودًا من الطلاب والعائلات</span> لنضمن أن يحصل كل متعلم على الاهتمام الكامل الذي يستحقه. جودة التعليم أهم عندنا من عدد الطلاب." 
-                       data-en="<span class='highlight'>We accompany a limited number of students and families</span> to ensure every learner gets the full attention they deserve. Quality of education is more important to us than the number of students.">
+                    <p data-ar="<span class='highlight'>نحن نرافق عددًا محدودًا من الطلاب والعائلات</span> لنضمن أن يحصل كل متعلم على الاهتمام الكامل الذي يستحقه.<br> جودة التعليم أهم عندنا من عدد الطلاب." 
+                       data-en="<span class='highlight'>We accompany a limited number of students and families</span> to ensure every learner gets the full attention they deserve.<br> Quality of education is more important to us than the number of students.">
                         <span class="highlight">نحن نرافق عددًا محدودًا من الطلاب والعائلات</span> لنضمن أن يحصل كل متعلم على الاهتمام الكامل الذي يستحقه.
                     </p>
                 </div>
@@ -3082,10 +3147,14 @@
                     </div>
                     
                     <p style="font-style: italic; margin-top: 40px; padding: 25px; background: rgba(148, 163, 184, 0.1); border-radius: var(--border-radius); border: 1px solid var(--dark-border); font-size: 1.15rem;">
-                        <span data-ar="🤝 نرجو التقديم فقط إذا كنت تبحث عن تعليم هادئ يركز على الفهم والثقة. نحن نرافق عددًا محدودًا من الطلاب لنضمن جودة حقيقية ورعاية كاملة." 
-                              data-en="🤝 Please apply only if you're looking for calm education that focuses on understanding and confidence. We accompany a limited number of students to ensure real quality and full care.">
-                            🤝 نرجو التقديم فقط إذا كنت تبحث عن تعليم هادئ يركز على الفهم والثقة.
-                        </span>
+                        <span 
+  data-ar="🤝 نرجو التقديم فقط إذا كنت تبحث عن تعليم هادئ يركز على الفهم والثقة.<br><br>نحن نرافق عددًا محدودًا من الطلاب لنضمن جودة حقيقية ورعاية كاملة."
+  data-en="🤝 Please apply only if you're looking for calm education that focuses on understanding and confidence.<br><br>We accompany a limited number of students to ensure real quality and full care.">
+  
+  🤝 نرجو التقديم فقط إذا كنت تبحث عن تعليم هادئ يركز على الفهم والثقة.<br><br>
+  نحن نرافق عددًا محدودًا من الطلاب لنضمن جودة حقيقية ورعاية كاملة.
+</span>
+
                     </p>
                 </div>
             </div>
@@ -3098,7 +3167,13 @@
         <div class="container">
             <div class="footer-content">
                 <div style="flex: 1;">
-                    <div class="footer-logo">أكاديمية نوران</div>
+                    <div 
+  class="footer-logo"
+  data-ar="أكاديمية نوران"
+  data-en="Nooran Academy">
+  أكاديمية نوران
+</div>
+
                     <p data-ar="نرافقك في رحلة تعلم العربية والقرآن بأسلوب يناسب عمرك ومرحلتك" 
                        data-en="We accompany you on the journey of learning Arabic and Quran in a way that fits your age and stage">
                         نرافقك في رحلة تعلم العربية والقرآن بأسلوب يناسب عمرك ومرحلتك
@@ -3115,15 +3190,22 @@
                             <span data-ar="الأسعار الشفافة" data-en="Transparent Pricing">الأسعار الشفافة</span>
                         </a>
                         
-                        <a href="javascript:void(0)" onclick="openModal()"><i class="fas fa-headset"></i> 
-                            <span data-ar="👋 تحدث معنا" data-en="👋 Talk to Us">👋 تحدث معنا</span>
-                        </a>
+                        <a href="#" id="footerWhatsappBtn">
+    <i class="fab fa-whatsapp"></i> 
+    <span data-ar="👋 تحدث معنا" data-en="👋 Talk to Us">👋 تحدث معنا</span>
+</a>
+
                     </div>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>© 2026 أكاديمية نوران. <span data-ar="❤️ تعليم من القلب للقلب" data-en="❤️ Teaching from Heart to Heart">❤️ تعليم من القلب للقلب</span></p>
+                <p
+  data-ar="© 2026 أكاديمية نوران. ❤️ تعليم من القلب للقلب"
+  data-en="© 2026 Nooran Academy. ❤️ Teaching from Heart to Heart">
+  © 2026 أكاديمية نوران. ❤️ تعليم من القلب للقلب
+</p>
+
                 <p style="margin-top: 15px; font-size: 0.95rem;">
                     <span data-ar="🕊️ بيئة آمنة لجميع الأعمار — تعليم يركز على الفهم" 
                           data-en="🕊️ Safe Environment for All Ages — Education Focused on Understanding">
@@ -3542,7 +3624,21 @@ document.getElementById('whatsappFloatBtn').addEventListener('click', function (
         document.getElementById('trialHeroBtn').addEventListener('click', openModal);
         document.getElementById('finalTrialBtn').addEventListener('click', openModal);
         document.getElementById('pricingTrialBtn').addEventListener('click', openModal);
-        document.getElementById('talkFirstBtn').addEventListener('click', openModal);
+        
+        
+
+        // TALK TO US FIRST BUTTON (FINAL CTA)
+document.getElementById('talkFirstBtn').addEventListener('click', function () {
+    const phone = '201061815595';
+
+    const message = isArabic()
+        ? 'السلام عليكم، حابب أتكلم معكم الأول قبل التسجيل'
+        : 'As-salamu alaykum, I would like to talk to you first before registering';
+
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+});
+
         
         // زر ابدأ التعلم الآن
         document.getElementById('startLearningBtn').addEventListener('click', function() {
@@ -3555,12 +3651,32 @@ document.getElementById('whatsappFloatBtn').addEventListener('click', function (
         });
         
         // FAQ toggle
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const item = question.parentElement;
-                item.classList.toggle('active');
-            });
+
+document.querySelectorAll('.faq-question').forEach(question => {
+    question.addEventListener('click', () => {
+        const item = question.closest('.faq-item');
+        const answer = item.querySelector('.faq-answer');
+
+        // اقفل كل الباقي
+        document.querySelectorAll('.faq-item').forEach(otherItem => {
+            if (otherItem !== item) {
+                otherItem.classList.remove('active');
+                const otherAnswer = otherItem.querySelector('.faq-answer');
+                otherAnswer.style.maxHeight = null;
+            }
         });
+
+        // Toggle الحالي
+        if (item.classList.contains('active')) {
+            item.classList.remove('active');
+            answer.style.maxHeight = null;
+        } else {
+            item.classList.add('active');
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+    });
+});
+
         
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
@@ -3627,6 +3743,20 @@ document.querySelectorAll('.section').forEach(section => {
     section.classList.add('section-hidden');
     sectionObserver.observe(section);
 });
+// FOOTER WHATSAPP BUTTON
+document.getElementById('footerWhatsappBtn').addEventListener('click', function (e) {
+    e.preventDefault();
+
+    const phone = '201061815595';
+
+    const message = isArabic()
+        ? 'السلام عليكم، حابب أتكلم معكم بخصوص أكاديمية نوران'
+        : 'As-salamu alaykum, I would like to talk to you about Nooran Academy';
+
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+});
+
 
     </script>
 </body>
