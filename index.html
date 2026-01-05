@@ -1908,34 +1908,7 @@
             border-color: rgba(87, 204, 153, 0.5);
         }
 
-        /* 20. تحسينات الزر العائم */
-        .floating-trial-btn {
-            position: fixed;
-            bottom: 40px;
-            left: 40px;
-            width: 90px;
-            height: 90px;
-            background: var(--dark-card-gradient);
-            border: 2px solid var(--accent-color);
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 999;
-            cursor: pointer;
-            opacity: 0;
-            transform: translateY(100px) scale(0.7);
-            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
-                        transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(10px);
-        }
 
-        .floating-trial-btn.visible {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
 
         .floating-trial-btn:hover {
             transform: scale(1.1) translateY(-5px);
