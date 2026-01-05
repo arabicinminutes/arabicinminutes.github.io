@@ -2674,6 +2674,34 @@
 
 }
 
+
+
+
+
+
+/* =========================
+   MOBILE EXCEPTIONS (SAFE)
+   ========================= */
+@media (max-width: 768px) {
+
+  /* 1️⃣ السماح بتنوير كلمة (مجاني / FREE) فقط */
+  .pricing-card.free .pricing-price {
+    animation: freeGlow 3.5s ease-in-out infinite !important;
+  }
+
+  /* 2️⃣ السماح بحركة زر الهيرو فقط */
+  #trialHeroBtn {
+    animation: pulse 3.5s ease-in-out infinite !important;
+  }
+
+  /* 3️⃣ تأكيد إيقاف أي أنيميشن تاني */
+  .pulse:not(#trialHeroBtn),
+  .freeGlow:not(.pricing-card.free .pricing-price) {
+    animation: none !important;
+  }
+}
+
+
     </style>
 </head>
 <body class="arabic" dir="rtl">
