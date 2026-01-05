@@ -2602,6 +2602,78 @@
   }
 }
 
+
+
+
+
+
+
+
+/* =========================
+   MOBILE PERFORMANCE MODE
+   ========================= */
+
+@media (max-width: 768px) {
+
+  /* 1️⃣ إلغاء أي blur (أكبر سبب للبطء) */
+  * {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* 2️⃣ إيقاف كل الأنيميشن الثقيلة */
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition-duration: 0.15s !important;
+  }
+
+  /* 3️⃣ إلغاء كل التحركات */
+  *:hover {
+    transform: none !important;
+    filter: none !important;
+  }
+
+  /* 4️⃣ تقليل الظلال بدل حذفها */
+  .service-card,
+  .pricing-card,
+  .teacher-card,
+  .testimonial-card,
+  .trust-item,
+  .suitability-card,
+  .final-cta,
+  .modal-content {
+    box-shadow: 0 6px 14px rgba(0,0,0,0.25) !important;
+  }
+
+  /* 5️⃣ إزالة الخلفيات الزخرفية الثقيلة */
+  body::before,
+  header::after,
+  .section::before,
+  .final-cta::before,
+  .suitability-note::before {
+    display: none !important;
+  }
+
+  /* 6️⃣ منع إعادة حساب layout */
+  html, body {
+    overflow-x: hidden !important;
+  }
+
+  /* 7️⃣ تحسين النص */
+  body {
+    text-shadow: none !important;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* 8️⃣ تحسين الأداء أثناء السكروول */
+  .floating-trial-btn {
+    will-change: transform;
+  }
+
+}
+
     </style>
 </head>
 <body class="arabic" dir="rtl">
