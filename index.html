@@ -3784,6 +3784,67 @@ document.querySelectorAll('[data-whatsapp]').forEach(btn => {
     });
 });
 
+        // ====================
+        // 8. INITIALIZATION
+        // ====================
+        
+        document.addEventListener('DOMContentLoaded', function () {
+
+    // ===== ELEMENTS =====
+    const langButtons = document.querySelectorAll('.lang-btn[data-lang]');
+    const body = document.body;
+
+    // ===== LANGUAGE BUTTONS =====
+    langButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            langButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            const lang = button.dataset.lang;
+            body.classList.remove('arabic', 'english');
+            body.classList.add(lang === 'ar' ? 'arabic' : 'english');
+
+            updateLanguage(lang);
+        });
+    });
+
+    // ===== INIT LANGUAGE =====
+    const savedLang = localStorage.getItem('lang') || 'ar';
+    body.classList.add(savedLang === 'ar' ? 'arabic' : 'english');
+    updateLanguage(savedLang);
+
+    // ===== BUTTONS =====
+    document.getElementById('trialBtn')?.addEventListener('click', openModal);
+    document.getElementById('trialHeroBtn')?.addEventListener('click', openModal);
+    document.getElementById('finalTrialBtn')?.addEventListener('click', openModal);
+    document.getElementById('pricingTrialBtn')?.addEventListener('click', openModal);
+
+    // ===== PRIVACY MODAL =====
+    const privacyBtn = document.getElementById('privacyBtn');
+    const privacyModal = document.getElementById('privacyModal');
+    const closePrivacy = document.getElementById('closePrivacy');
+
+    privacyBtn?.addEventListener('click', () => {
+        privacyModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    });
+
+    closePrivacy?.addEventListener('click', () => {
+        privacyModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+
+    privacyModal?.addEventListener('click', e => {
+        if (e.target === privacyModal) {
+            privacyModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    // ===== FLOATING BUTTON INIT =====
+    updateFloatingButton();
+
+});
 
 
 
