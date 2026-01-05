@@ -2496,6 +2496,45 @@
     }
 }
 
+/* ===== MAKE SECONDARY BUTTON FEEL CLICKABLE ===== */
+.btn-secondary {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.12),
+        rgba(255, 255, 255, 0.05)
+    );
+    border: 2px solid var(--accent-color);
+    color: var(--dark-text);
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.35),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+
+    text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+
+/* Hover */
+.btn-secondary:hover {
+    background: linear-gradient(
+        135deg,
+        rgba(87, 204, 153, 0.25),
+        rgba(45, 139, 139, 0.25)
+    );
+    color: white;
+    transform: translateY(-6px);
+    box-shadow:
+        0 16px 35px rgba(87, 204, 153, 0.35);
+}
+
+/* Active (click) */
+.btn-secondary:active {
+    transform: translateY(-2px);
+    box-shadow:
+        0 8px 18px rgba(87, 204, 153, 0.3);
+}
+#trialHeroBtn {
+    animation: pulse 2.5s ease-in-out infinite;
+}
 
 
     </style>
@@ -3045,9 +3084,9 @@
                             <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
                         </div>
                         <div class="faq-answer">
-                            <span data-ar="انقر على أي زر '🎁 جرّب قبل أن تقرر' في الموقع، املأ النموذج البسيط، وسنتواصل معك خلال 24 ساعة لتحديد الموعد المناسب لك." 
-                                  data-en="Click any '🎁 Try Before You Decide' button on the site, fill out the simple form, and we'll contact you within 24 hours to schedule the appropriate time for you.">
-                                انقر على أي زر '🎁 جرّب قبل أن تقرر' في الموقع، املأ النموذج البسيط، وسنتواصل معك خلال 24 ساعة لتحديد الموعد المناسب لك.
+                            <span data-ar="انقر على أي زر '🎁 حصة تجريبية مجانية' في الموقع، املأ النموذج البسيط، وسنتواصل معك خلال 24 ساعة لتحديد الموعد المناسب لك." 
+                                  data-en="Click any '🎁 Free Trial Lesson' button on the site, fill out the simple form, and we'll contact you within 24 hours to schedule the appropriate time for you.">
+                                انقر على أي زر '🎁 حصة تجريبية مجانية' في الموقع، املأ النموذج البسيط، وسنتواصل معك خلال 24 ساعة لتحديد الموعد المناسب لك.
                             </span>
                         </div>
                     </div>
