@@ -1834,24 +1834,7 @@
             text-align: center;
         }
 
-        .modal-close {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background: rgba(148, 163, 184, 0.1);
-            border: none;
-            font-size: 1.2rem;
-            cursor: pointer;
-            color: var(--dark-text);
-            width: 35px;
-            height: 35px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: var(--transition);
-            z-index: 1002;
-        }
+
 
         .modal-close:hover {
             background: rgba(87, 204, 153, 0.2);
@@ -1924,13 +1907,23 @@
             justify-content: center;
             z-index: 999;
             cursor: pointer;
-            opacity: 0;
-            transform: translateY(100px) scale(0.7);
-            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
-                        transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(10px);
-        }
+
+    opacity: 0;
+    transform: translateY(100px) scale(0.7);
+    pointer-events: none;
+
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+        .floating-trial-btn.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto; /* 👈 السماح بالضغط */
+}
+
 
         .floating-trial-btn.visible {
             opacity: 1;
@@ -2563,44 +2556,13 @@
 
 
 
-.modal-close {
-  position: absolute;
-  top: 12px;
-  right: 12px;
 
-  width: 40px;
-  height: 40px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 28px;
-  font-weight: bold;
-  line-height: 1;
-
-  background: rgba(0, 0, 0, 0.55);
-  color: #fff;
-
-  border: none;
-  border-radius: 50%;
-
-  cursor: pointer;
-  z-index: 1001;
-
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-}
 
 /* تحسين اللمس */
 .modal-close:active {
   transform: scale(0.92);
 }
-@media (max-width: 768px) {
-  .modal-close {
-    top: calc(env(safe-area-inset-top) + 12px);
-    right: calc(env(safe-area-inset-right) + 12px);
-  }
-}
+
 
 
 
@@ -2705,10 +2667,38 @@
   font-size: 0.85em;
 }
 
-body.modal-open {
-  overflow: hidden !important;
-  height: 100vh;
+
+
+
+.modal-close {
+  position: absolute;
+  top: calc(env(safe-area-inset-top) + 12px);
+  right: calc(env(safe-area-inset-right) + 12px);
+
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 26px;
+  font-weight: bold;
+
+  background: rgba(0,0,0,0.65);
+  color: #fff;
+
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+
+  z-index: 3000;
 }
+
+.modal-close:active {
+  transform: scale(0.9);
+}
+
 
 
     </style>
@@ -3446,7 +3436,8 @@ body.modal-open {
     <!-- Modal for Trial Lesson -->
     <div class="modal-overlay" id="trialModal">
         <div class="modal-content">
-            <button class="modal-close" onclick="closeModal()">&times;</button>
+    <button class="modal-close" onclick="closeModal()">×</button>
+
             
             <div class="modal-header">
                 <h2 data-ar="🎁 احجز حصتك التجريبية المجانية" 
@@ -3673,30 +3664,21 @@ function updateLanguage(lang) {
             
 
         
-        // ====================
-        // 3. MODAL FUNCTIONS
-        // ====================
-  function openModal() {
+// ====================
+// 3. MODAL FUNCTIONS (SIMPLE FIX)
+// ====================
+function openModal() {
     document.getElementById('trialModal').style.display = 'flex';
-    document.body.classList.add('modal-open');
-
-
     document.getElementById('trialForm').style.display = 'block';
     document.getElementById('successBox').style.display = 'none';
     document.getElementById('errorBox').style.display = 'none';
-        document.querySelector('#trialForm button[type="submit"]').disabled = false;
-
+    document.querySelector('#trialForm button[type="submit"]').disabled = false;
 }
 
-
-        
-   function closeModal() {
+function closeModal() {
     document.getElementById('trialModal').style.display = 'none';
-    document.body.classList.remove('modal-open');
-
     const formContainer = document.querySelector('.modal-form-container');
     if (formContainer) formContainer.style.display = 'block';
-
     document.getElementById('successBox').style.display = 'none';
     document.getElementById('errorBox').style.display = 'none';
 }
