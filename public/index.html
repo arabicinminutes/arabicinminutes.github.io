@@ -2541,6 +2541,71 @@ input:hover, textarea:hover, select:hover {
     }
 }
 
+    /* ===== LOGO FIX (IMPORTANT) ===== */
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    margin-bottom: 35px;
+    background: none !important;
+    -webkit-text-fill-color: unset !important;
+    text-shadow: none;
+}
+
+/* حجم وشكل الصورة */
+.site-logo {
+    height: 110px;        /* الحجم الحقيقي */
+    width: auto;
+    max-width: 160px;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 25px rgba(87, 204, 153, 0.35));
+    transition: transform 0.4s ease;
+}
+
+/* اسم الأكاديمية */
+.logo-text {
+    font-size: 3.2rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--accent-color), var(--primary-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.2;
+}
+
+/* Hover */
+.logo:hover .site-logo {
+    transform: scale(1.08);
+}
+
+/* ===== MOBILE FIX ===== */
+@media (max-width: 768px) {
+    .site-logo {
+        height: 90px;
+    }
+
+    .logo-text {
+        font-size: 2.4rem;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .site-logo {
+        height: 80px;
+    }
+
+    .logo-text {
+        font-size: 2rem;
+    }
+}
+
 </style>
 </head>
 <body class="arabic" dir="rtl">
@@ -2578,14 +2643,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <header>
         <div class="container">
             <div class="header-content">
-                <div class="logo">
-                    <img src="Logo4.png" alt="Nooran Academy Logo" class="site-logo">
-                    <span 
-                        data-ar="أكاديمية نوران" 
-                        data-en="Nooran Academy">
-                        أكاديمية نوران
-                    </span>
-                </div>
+         <div class="logo">
+    <img src="Logo4.png" alt="Nooran Academy Logo" class="site-logo">
+    <div class="logo-text"
+         data-ar="أكاديمية نوران"
+         data-en="Nooran Academy">
+        أكاديمية نوران
+    </div>
+</div>
 
                 <h1 class="hero-headline"
                     data-ar="تعلّم العربية والقرآن بأسلوب يناسب عمرك ومرحلتك"
