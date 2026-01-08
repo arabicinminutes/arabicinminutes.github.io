@@ -2557,13 +2557,14 @@ input:hover, textarea:hover, select:hover {
 
 /* حجم وشكل الصورة */
 .site-logo {
-    height: 110px;        /* الحجم الحقيقي */
-    width: auto;
-    max-width: 160px;
-    object-fit: contain;
+    height: 110px;
+    width: 110px;          /* مهم عشان تبقى دايرة مظبوطة */
+    object-fit: cover;     /* يملأ الدائرة بدون تشويه */
+    border-radius: 50%;    /* 👈 ده اللي يخليها دائرية */
     filter: drop-shadow(0 10px 25px rgba(87, 204, 153, 0.35));
     transition: transform 0.4s ease;
 }
+
 
 /* اسم الأكاديمية */
 .logo-text {
@@ -2584,7 +2585,17 @@ input:hover, textarea:hover, select:hover {
 @media (max-width: 768px) {
     .site-logo {
         height: 90px;
+        width: 90px;
     }
+}
+
+@media (max-width: 480px) {
+    .site-logo {
+        height: 80px;
+        width: 80px;
+    }
+}
+
 
     .logo-text {
         font-size: 2.4rem;
